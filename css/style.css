@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css?family=Fjalla+One");
+@import url("https://fonts.googleapis.com/css?family=Droid+Serif");
+
+
+a {
+    text-decoration: none;
+}
+
+body {
+    background-color: #B65F28;
+}
+
+.content {
+    background-color: #FFFFFF;
+}
+
+#header, #footer, .content {
+    display: flex;
+    justify-content: space-between;
+}
+
+#header-right, #social-network {
+    display: flex;
+    align-items: center;
+}
+
+#header-right p {
+    margin-left: 20px;
+}
+
+#header img {
+    margin: 20px;
+}
+
+#social-network img {
+    margin: 5px;
+}
+
+#informations, #contact {
+    margin: 20px;
+}
+
+
+.text-style1 {
+    font-size: 20px;
+    font-family: 'Fjalla One';
+    
+}
+.text-style1 a {
+    color: #FFFFFF;
+}
+
+.text-style2 {
+    display: inline-block;
+    font-family: 'Droid Serif';
+    padding: 10px;
+    border: 2px solid;
+}
+
+.text-style2 a {
+    color: #2C1E1E;
+}
+
+.text-style3 {
+    font-size: 18px;
+}
+.text-style3, .text-style4 {
+    color: #2C1E1E;
+    font-family: 'Droid Serif';
+}
+
+.zone-filtre {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#filter {
+    border: 2px solid;
+    border-color: #2C1E1E;
+    padding: 20px;
+}
+
+.table {
+    display: table;
+    padding: 10px;
+}
+
+
+

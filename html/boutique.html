@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>Choco pap</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <!-- HEADER-->
+        <div id="header">
+            <div id="header-logo">
+                <img src="images/logo.png" alt="logo" width="70" height="70">
+            </div>
+            <div id="header-right">
+                <div class="text-style1">
+                    <p><a href="index.html">Accueil</a></p></div>
+                <div class="text-style1">
+                    <p><a href="boutique.html">Boutique</a></p></div>
+                <div class="panier">
+                    <img src="images/panier.png" alt="panier" width="70" height="70">
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- FILTRES -->
+            <div id="filter">
+                <div class="text-style3">Cat&eacute;gories</div>
+                <div class="zone-filtre">
+                    <div>
+                        <input type="checkbox" id="ch-all">
+                        <label for="ch-all" class="text-style4">Tous</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="ch-chocolat-blanc">
+                        <label for="ch-chocolat-blanc" class="text-style4">Chocolat blanc</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="ch-chocolat-lait">
+                        <label for="ch-chocolat-lait" class="text-style4">Chocolat au lait</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="ch-chocolat-noir">
+                        <label for="ch-chocolat-noir" class="text-style4">Chocolat noir</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="ch-noix">
+                        <label for="ch-noix" class="text-style4">Noix/Noisette</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="ch-fruit">
+                        <label for="ch-fruit" class="text-style4">Fruit</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="ch-caramel">
+                        <label for="ch-caramel" class="text-style4">Caramel</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="ch-liqueur">
+                        <label for="ch-liqueur" class="text-style4">Liqueur</label>
+                    </div>
+                </div>
+                <div class="text-style3">Prix</div>
+                <div class="zone-filtre">
+                    <div>
+                        <div>
+                            <span class="text-style4">Prix min</span>
+                            <input type="number" id="prix-min">
+                        </div>
+                        <div>
+                            <span class="text-style4">Prix max</span>
+                            <input type="number" id="prix-max">
+                        </div> 
+                    </div>
+                </div>
+                <div class="text-style3">Notes</div>
+                <div class="zone-filtre">
+                    <div>
+                        <div>
+                            <span class="text-style4">Note min</span>
+                            <select>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                        <div>
+                            <span class="text-style4">Note max</span>
+                            <select>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- PRODUIT-->
+            <div>
+                <!-- TODO : Ajouter les produits de façon dynamique-->
+            </div>
+        </div>
+
+    </body>
+</html>
