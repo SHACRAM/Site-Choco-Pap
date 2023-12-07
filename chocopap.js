@@ -6,10 +6,14 @@ $(function(){
     }) 
 });
 
-/* Fermeture du menu si changement de taille d'écran*/
+/* Fermeture du menu burger si changement de taille d'écran*/
 $(window).on("resize", function(){
     $("#headerMobile").hide()
 }
 );
+
+/*Carrousel*/
+
+
 
 
