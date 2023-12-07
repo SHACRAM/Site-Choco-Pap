@@ -166,6 +166,9 @@ body {
      #header-right{
         display: none;
     }
+    #headerMobile{
+        display: none;
+    }
     
 }
 
