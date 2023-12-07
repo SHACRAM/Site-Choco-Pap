@@ -2,6 +2,16 @@
 @import url("https://fonts.googleapis.com/css?family=Droid+Serif");
 
 
+:root{
+    --white: #FFFFFF;
+    --bleu: #55C0CF;
+    --marron: #2C1E1E;
+    --marronFonce: #1F1615;
+    --orange: #B65F28;
+    --jaune: #FFD543;
+}
+
+
 a {
     text-decoration: none;
 }
@@ -13,24 +23,89 @@ body {
 .content {
     background-color: #FFFFFF;
 }
+#logoSite{
+    width: 4.5em;
+    Height: 4.5em;
+    margin: 1em 0em 0em 1em;
+}
 
 #header, #footer, .content {
     display: flex;
     justify-content: space-between;
+    padding-right: 1em;
 }
 
 #header-right, #social-network {
     display: flex;
     align-items: center;
 }
-
-#header-right p {
-    margin-left: 20px;
+#mainNav{
+    display: flex;
+    list-style: none;
+    gap: 2em;
+}
+#mainNavMobile{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.5em;
+    padding-left: 0.5em;
+    gap: 2em;
+    text-decoration: underline 2px black;
 }
 
-#header img {
-    margin: 20px;
+#mainNavMobilePanier{
+    list-style: none;
+    display: flex;
+    padding-left: 0.5em;
+    gap: 1em;
 }
+
+
+#mainNavMobile a, #mainNav a, #mainNavMobilePanier a{
+    color: var(--white);
+    font-size: 1.5rem;
+}
+
+#panierMobile{
+    text-decoration: underline 2px black;
+
+}
+
+
+#menuBurger{
+    display: block;
+    width: 4em;
+    height: 4em;
+    margin-top: 1em;
+    padding: 0;
+    border: none;
+}
+
+#imgMenuBurger{
+    margin: 0;
+    width: 4em;
+    height: 4em;
+}
+
+#panier{
+    display: flex;
+    align-items: center;
+    
+}
+
+.imgPanier{
+    width: 1.8em;
+    height: 1.8em;
+    
+}
+
+#header-logo{
+    display: flex;
+    margin: 1.5em;
+}
+
+
 
 #social-network img {
     margin: 5px;
@@ -87,3 +162,19 @@ body {
 
 
 
+@media  only screen and (max-width: 896px) {
+     #header-right{
+        display: none;
+    }
+    
+}
+
+@media  only screen and (min-width: 897px) {
+    #menuBurger{
+        display: none;
+    }
+    #headerMobile{
+        display: none;
+    }
+   
+}
