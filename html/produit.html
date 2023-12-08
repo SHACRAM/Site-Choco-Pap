@@ -2,25 +2,35 @@
 <html lang="fr">
     <head>
         <title>Choco pap</title>
-        <link rel="stylesheet" href="../style.css">
-    </head>
+        <link rel="stylesheet" href="../css/style.css">
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script src="../chocopap.js"></script>
     <body>
         <!-- TODO: Rendre la fiche produit dynamique -->
         <!-- HEADER-->
         <div id="header">
-            <div id="header-logo">
-                <img src="../images/logo.png" alt="logo" width="70" height="70">
-            </div>
+            <img src="../images/logo.png" alt="logo" id="logoSite">
+            <button id="menuBurger"><img src="../images/menuBurger.png" alt="image représentant un menu burger" id="imgMenuBurger"></button>
             <div id="header-right">
-                <div class="text-style1">
-                    <p><a href="index.html">Accueil</a></p>
-                </div>
-                <div class="text-style1">
-                    <p><a href="boutique.html">Boutique</a></p>
-                </div>
-                <div class="panier">
-                    <img src="../images/panier.png" alt="panier" width="70" height="70">
-                </div>
+                <ul id="mainNav">
+                    <li><a href="index.html" class="text-style1">Acceuil</a></li>
+                    <li><a href="boutique.html" class="text-style1">Boutique</a></li>
+                    <li><a href="#" class="text-style1" class="quantitePanier">2</a></li>
+                </ul>
+                <img src="../images/panier.png" alt="panier" class="imgPanier">
+            </div>
+        </div>
+        <div id="headerMobile">
+            <ul id="mainNavMobile">
+                <li><a href="index.html" class="text-style1">Acceuil</a></li>
+                <li><a href="boutique.html" class="text-style1">Boutique</a></li>
+            </ul>
+            <div id="panier">
+                <ul id="mainNavMobilePanier">
+                    <li><a href="#" class="text-style1" id="panierMobile">Panier</a></li>
+                    <li><a class="text-style1" class="quantitePanier">2</a></li>
+                </ul>
+                <img src="../images/panier.png" alt="panier" class="imgPanier">
             </div>
         </div>
 

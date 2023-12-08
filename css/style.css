@@ -104,6 +104,13 @@ body {
     display: flex;
     margin: 1.5em;
 }
+/*caroussel*/
+
+#carrousel{
+    width: 100%;
+    height: 20em;
+    background-color: blue;
+}
 
 
 
@@ -166,6 +173,12 @@ body {
      #header-right{
         display: none;
     }
+    #headerMobile{
+        display: none;
+    }
+    #boutonBoutique{
+        display: none;
+    }
     
 }
 
@@ -174,6 +187,9 @@ body {
         display: none;
     }
     #headerMobile{
+        display: none;
+    }
+    #boutonBoutique{
         display: none;
     }
    
