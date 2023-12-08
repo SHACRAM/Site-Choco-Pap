@@ -77,7 +77,7 @@ body {
     display: block;
     width: 4em;
     height: 4em;
-    margin-top: 1em;
+    margin-top: 2em;
     padding: 0;
     border: none;
 }
@@ -105,12 +105,19 @@ body {
     margin: 1.5em;
 }
 /*caroussel*/
-
-#carrousel{
-    
+.carrousel div{
+    height: 35em;
+    position: relative;
+    margin-top: 1em;
 }
 
-
+#boutonBoutique{
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.9);
+}
 
 
 #social-network img {
@@ -134,8 +141,11 @@ body {
 .text-style2 {
     display: inline-block;
     font-family: 'Droid Serif';
-    padding: 10px;
-    border: 2px solid;
+    font-size: 1rem;
+    padding: 1em;
+    border: 1px solid;
+    border-radius: 4px 4px 4px 4px;
+    
 }
 
 .text-style2 a {
@@ -175,9 +185,7 @@ body {
     #headerMobile{
         display: none;
     }
-    #boutonBoutique{
-        display: none;
-    }
+    
     
 }
 
@@ -188,8 +196,6 @@ body {
     #headerMobile{
         display: none;
     }
-    #boutonBoutique{
-        display: none;
-    }
+    
    
 }
