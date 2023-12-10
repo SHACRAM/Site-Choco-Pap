@@ -4,7 +4,7 @@
       "title": "Cerisier",
       "price": 2.99,
       "note" : 5,
-      "image": "./images/produit1.jpg",
+      "image": "../images/produit1.jpg",
       "category": {
           "blanc": false,
           "lait": true,

@@ -3,8 +3,8 @@
     <head>
         <title>Boutique</title>
         <link rel="stylesheet" href="../css/style.css">
-        <script src="../node_modules/jquery/dist/jquery.js"></script>
-        <script src="../chocopap.js"></script>
+        <script src="../node_modules/jquery/dist/jquery.js"defer></script>
+        <script src="../chocopap.js" defer></script>
     </head>
     <body>
         <!-- HEADER-->
@@ -112,10 +112,34 @@
                 </div>
             </div>
             <!-- PRODUIT-->
-            <div>
+            <div id="afichageProduit">
+                <div>
+                    <div class="detailProduit">
+                        <div>
+                            
+                        </div>
+                    </div>
+                </div>
+
                 <!-- TODO : Ajouter les produits de façon dynamique-->
             </div>
         </div>
-
+        <!-- FOOTER -->
+        <div id="footer">
+            <div id="informations">
+                <div class="text-style3">Choco pap</div>
+                <div class="text-style4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</div>
+            </div>
+            <div id="contact">
+                <div class="text-style3">Contact</div>
+                <div class="text-style4">Adresse : 51 rue du chocolat 75000 Paris Téléphone: 01 23 45 67 89
+                    Horaires: 9h00-17h00 du Lundi au vendredi</div>
+            </div>
+            <div id="social-network">
+                <div><a href="https://www.facebook.com/"><img src="../images/iconeFacebook.png" alt="facebook" class="logoReseaux"></a></div>
+                <div><a href="https://www.instagram.com/"><img src="../images/iconeInstagram.png" alt="instagram" class="logoReseaux"></a></div>
+                <div><a href="https://twitter.com/"><img src="../images/iconetwitter.png" alt="twitter" class="logoReseaux"></a></div>
+            </div>
+        </div>
     </body>
 </html>

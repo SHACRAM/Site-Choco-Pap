@@ -12,9 +12,9 @@ $(window).on("resize", function(){
 }
 );
 
+
+
 /*Carrousel*/
-
-
 $(function(){
     $('.carrousel').slick({
        accessibility: true,
@@ -25,3 +25,16 @@ $(function(){
     })
 })
 
+
+
+    
+    
+
+    
+
+
+
+
+
+
+  
