@@ -29,7 +29,7 @@ body {
     margin: 1em 0em 0em 1em;
 }
 
-#header, .content {
+#header{
     display: flex;
     justify-content: space-between;
     padding-right: 1em;
@@ -120,6 +120,18 @@ body {
     transform: translate(-50%, -50%);
     box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.9);
 }
+
+/*filtres*/
+.content{
+    display: flex;
+    flex-direction: column;
+}
+.detailProduit div img{
+    width: 12em;
+    height: 12em;
+}
+
+
 #footer{
     display: flex;
     flex-direction: column;
@@ -184,8 +196,6 @@ body {
 }
 
 #filter {
-    border: 2px solid;
-    border-color: #2C1E1E;
     padding: 20px;
 }
 
