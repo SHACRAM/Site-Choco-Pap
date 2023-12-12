@@ -125,12 +125,25 @@ body {
 .content{
     display: flex;
     flex-direction: column;
-}
-.detailProduit div img{
-    width: 12em;
-    height: 12em;
+    gap: 2em;
 }
 
+#affichageProduit div img{
+   width: 50%;
+}
+
+#affichageProduit{
+    display: flex;
+    
+}
+
+.produitUnitaire {
+    display: flex;
+    flex-direction: column;
+}
+.boutonAddPanier{
+    width:6em;
+}
 
 #footer{
     display: flex;
@@ -240,4 +253,12 @@ body {
         margin-top: 0;
     }
     
+}
+
+
+/*médias query de la page boutique*/
+@media  only screen and (max-width: 896px){
+    .zone-filtre{
+        display: none;
+    }
 }

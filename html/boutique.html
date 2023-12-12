@@ -37,43 +37,43 @@
         <div class="content">
             <!-- FILTRES -->
             <div id="filter">
-                <div class="text-style3">Cat&eacute;gories</div>
-                <div class="zone-filtre">
+                <div class="text-style3" id="toggleCategories">Cat&eacute;gories</div>
+                <div class="zone-filtre" id="zone-filtre-categories">
                     <div>
-                        <input type="checkbox" id="ch-all">
+                        <input type="checkbox" id="ch-all" checked>
                         <label for="ch-all" class="text-style4">Tous</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="ch-chocolat-blanc">
+                        <input type="checkbox" id="ch-chocolat-blanc" class="filtreParfum">
                         <label for="ch-chocolat-blanc" class="text-style4">Chocolat blanc</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="ch-chocolat-lait">
+                        <input type="checkbox" id="ch-chocolat-lait" class="filtreParfum">
                         <label for="ch-chocolat-lait" class="text-style4">Chocolat au lait</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="ch-chocolat-noir">
+                        <input type="checkbox" id="ch-chocolat-noir" class="filtreParfum">
                         <label for="ch-chocolat-noir" class="text-style4">Chocolat noir</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="ch-noix">
+                        <input type="checkbox" id="ch-noix" class="filtreParfum">
                         <label for="ch-noix" class="text-style4">Noix/Noisette</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="ch-fruit">
+                        <input type="checkbox" id="ch-fruit" class="filtreParfum">
                         <label for="ch-fruit" class="text-style4">Fruit</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="ch-caramel">
+                        <input type="checkbox" id="ch-caramel" class="filtreParfum">
                         <label for="ch-caramel" class="text-style4">Caramel</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="ch-liqueur">
+                        <input type="checkbox" id="ch-liqueur" class="filtreParfum">
                         <label for="ch-liqueur" class="text-style4">Liqueur</label>
                     </div>
                 </div>
-                <div class="text-style3">Prix</div>
-                <div class="zone-filtre">
+                <div class="text-style3" id="togglePrix">Prix</div>
+                <div class="zone-filtre" id="zone-filtre-prix">
                     <div>
                         <div>
                             <span class="text-style4">Prix min</span>
@@ -85,8 +85,8 @@
                         </div> 
                     </div>
                 </div>
-                <div class="text-style3">Notes</div>
-                <div class="zone-filtre">
+                <div class="text-style3" id="toggleNote">Notes</div>
+                <div class="zone-filtre" id="zone-filtre-note">
                     <div>
                         <div>
                             <span class="text-style4">Note min</span>
@@ -112,10 +112,8 @@
                 </div>
             </div>
             <!-- PRODUIT-->
-            <div id="afichageProduit">
-                <div class="detailProduit">
-                    
-                </div>
+            <div id="affichageProduit">
+                
 
                 <!-- TODO : Ajouter les produits de façon dynamique-->
             </div>
