@@ -237,7 +237,7 @@ var allProduct = [
       }
   ]
 
-/*var checkBoxAll = document.getElementById('ch-all');
+var checkBoxAll = document.getElementById('ch-all');
 var affichageProduit= document.querySelector("#affichageProduit");
 
 checkBoxAll.addEventListener("change", function(){
@@ -246,37 +246,24 @@ checkBoxAll.addEventListener("change", function(){
         affichageProduit.style.display = "none";
         return;
     }
-    var title=[];
-    var prix=[];
-    var image = [];
-    var note =[];
-    allProduct.forEach(element => {
-        let prixP = element.price;
-        let titleP = element.title;
-        let imageUrl = element.image;
-        let noteP = element.note;
-        prix.push(prixP);
-        title.push(titleP);
-        image.push(imageUrl);
-        note.push(noteP);
-    });
     
-    allProduct.forEach((product, index) => {
+    allProduct.forEach((product) => {
         let imageInfo = document.createElement('img');
         imageInfo.src = product.image;
+        imageInfo.alt = product.description;
 
         var titleP = document.createElement('p');
         titleP.classList.add('descriptionProduit');
-        titleP.textContent = title[index];
+        titleP.textContent = product.title;
         
 
         let prixP = document.createElement('p');
         prixP.classList.add("prixProduit");
-        prixP.textContent = prix[index];
+        prixP.textContent = product.price;
 
         let noteP = document.createElement('p');
         noteP.classList.add("noteProduit");
-        noteP.textContent = `Note: ${note[index]}`;
+        noteP.textContent = `Note: ${product.note}`;
 
         let buttonPanier = document.createElement('button')
         buttonPanier.classList.add('boutonAddPanier');
@@ -297,8 +284,8 @@ checkBoxAll.addEventListener("change", function(){
 });
 
 /*filtre categories */
-
-/*chocolat blanc */
+var affichageProduit= document.querySelector("#affichageProduit");
+var produitValide = new Set(); 
 var checkBoxs = document.querySelectorAll('input[name="category"]');
 checkBoxs.forEach(checkBox=>{
     checkBox.addEventListener('change', function(){
@@ -307,25 +294,30 @@ checkBoxs.forEach(checkBox=>{
             if(checkBox.checked){
                 categories.push(checkBox.value);
             }
+            else if (!checkBox.checked){
+                affichageProduit.innerHTML = '';
+                produitValide.clear();
+            }
         });
         categories.forEach(category=>{
             allProduct.forEach(product =>{
-                if(product.category[category]===true){
+                if(product.category[category]===true && !produitValide.has(product.id)){
                     let imageInfo = document.createElement('img');
                     imageInfo.src = product.image;
+                    imageInfo.alt = product.description;
             
                     var titleP = document.createElement('p');
                     titleP.classList.add('descriptionProduit');
-                    titleP.textContent = title[index];
+                    titleP.textContent = product.title;
                     
             
                     let prixP = document.createElement('p');
                     prixP.classList.add("prixProduit");
-                    prixP.textContent = prix[index];
+                    prixP.textContent = product.price;
             
                     let noteP = document.createElement('p');
                     noteP.classList.add("noteProduit");
-                    noteP.textContent = `Note: ${note[index]}`;
+                    noteP.textContent = `Note: ${product.note}`;
             
                     let buttonPanier = document.createElement('button')
                     buttonPanier.classList.add('boutonAddPanier');
@@ -342,8 +334,9 @@ checkBoxs.forEach(checkBox=>{
                     divProduit.appendChild(buttonPanier);
                     affichageProduit.appendChild(divProduit);
                     affichageProduit.style.display = 'block'
-                    affichageProduit.appendChild(divProduit);
-                    affichageProduit.style.display = 'block';
+
+                    produitValide.add(product.id);
+                    
                 
 
 
@@ -365,53 +358,7 @@ checkBoxs.forEach(checkBox=>{
    
    
    
-    /*var hiddenBlanc = document.querySelectorAll('.produitUnitaire');
-    hiddenBlanc.forEach(element=>{
-        affichageProduit.removeChild(element);
-    })
- 
-    if (!checkBoxBlanc.checked){
-        return;
-    }
-        chocoBlanc.forEach(element =>{
-        let imageB = document.createElement('img');
-        imageB.src = element.image;
-        imageB.alt = element.description;
-
-        let titleB = document.createElement('p');
-        titleB.classList = ('descriptionProduit');
-        titleB.textContent = `${element.title}`;
-
-        let prixB = document.createElement('p');
-        prixB.classList.add("prixProduit");
-        prixB.textContent = `${element.price} €`;
-
-        let noteB = document.createElement('p');
-        noteB.classList.add("noteProduit");
-        noteB.textContent = `Note: ${element.note}`;
-
-        let buttonPanier = document.createElement('button')
-        buttonPanier.classList.add('boutonAddPanier');
-        buttonPanier.textContent='Ajouter au panier';
-
-        let divProduit = document.createElement('div');
-        divProduit.classList.add('produitUnitaire')
-        divProduit.setAttribute('produitTitle', element.title);
-
-        
-        divProduit.appendChild(imageB);
-        divProduit.appendChild(titleB);
-        divProduit.appendChild(prixB);
-        divProduit.appendChild(noteB);
-        divProduit.appendChild(buttonPanier);
-        affichageProduit.appendChild(divProduit);
-        affichageProduit.style.display = 'block';
-
-    })
     
-    
-})
-*/
 
 
 
