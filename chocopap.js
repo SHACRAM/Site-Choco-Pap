@@ -54,6 +54,9 @@ $(function(){
 
 
 /*filtre "tous" */
+document.addEventListener('DOMContentLoaded', function(){
+    addProduct();
+})
 var allProduct = [
     {
         "id": "1" ,
@@ -236,51 +239,18 @@ var allProduct = [
           "ingredients": "Caramel au beurre salé avec un coeur en poudre chocolatée. Allergènes : SOJA, LAIT (LACTOSE). Contient de l'anhydride sulfureux"
       }
   ]
-
-var checkBoxAll = document.getElementById('ch-all');
+var checkBoxAll = document.querySelector('input[name="ch-all"]');
 var affichageProduit= document.querySelector("#affichageProduit");
-
 checkBoxAll.addEventListener("change", function(){
     affichageProduit.innerHTML='';
     if (!checkBoxAll.checked){
         affichageProduit.style.display = "none";
         return;
     }
-    
-    allProduct.forEach((product) => {
-        let imageInfo = document.createElement('img');
-        imageInfo.src = product.image;
-        imageInfo.alt = product.description;
-
-        var titleP = document.createElement('p');
-        titleP.classList.add('descriptionProduit');
-        titleP.textContent = product.title;
-        
-
-        let prixP = document.createElement('p');
-        prixP.classList.add("prixProduit");
-        prixP.textContent = product.price;
-
-        let noteP = document.createElement('p');
-        noteP.classList.add("noteProduit");
-        noteP.textContent = `Note: ${product.note}`;
-
-        let buttonPanier = document.createElement('button')
-        buttonPanier.classList.add('boutonAddPanier');
-        buttonPanier.textContent='Ajouter au panier';
-
-        let divProduit = document.createElement('div');
-        divProduit.classList.add('produitUnitaire')
-
-        
-        divProduit.appendChild(imageInfo);
-        divProduit.appendChild(titleP);
-        divProduit.appendChild(prixP);
-        divProduit.appendChild(noteP);
-        divProduit.appendChild(buttonPanier);
-        affichageProduit.appendChild(divProduit);
-        affichageProduit.style.display = 'block';
-    });
+    checkBoxs.forEach(checkBox=>{
+        checkBox.checked = false;
+    })
+    addProduct();
 });
 
 /*filtre categories */
@@ -297,8 +267,18 @@ checkBoxs.forEach(checkBox=>{
             else if (!checkBox.checked){
                 affichageProduit.innerHTML = '';
                 produitValide.clear();
+                checkBoxAll.checked;
             }
         });
+
+        var allUnchecked = Array.from(checkBoxs).every(function(checkBox){
+            return !checkBox.checked;
+        });
+
+        checkBoxAll.checked = allUnchecked;
+        if (allUnchecked){
+            addProduct();
+        }
         categories.forEach(category=>{
             allProduct.forEach(product =>{
                 if(product.category[category]===true && !produitValide.has(product.id)){
@@ -336,23 +316,49 @@ checkBoxs.forEach(checkBox=>{
                     affichageProduit.style.display = 'block'
 
                     produitValide.add(product.id);
-                    
-                
-
-
                 }
             });
-
-        
-        
         })
      
     })
 })
 
-   
-   
-   
+ function addProduct(){
+    allProduct.forEach((product) => {
+        let imageInfo = document.createElement('img');
+        imageInfo.src = product.image;
+        imageInfo.alt = product.description;
+
+        var titleP = document.createElement('p');
+        titleP.classList.add('descriptionProduit');
+        titleP.textContent = product.title;
+        
+
+        let prixP = document.createElement('p');
+        prixP.classList.add("prixProduit");
+        prixP.textContent = product.price;
+
+        let noteP = document.createElement('p');
+        noteP.classList.add("noteProduit");
+        noteP.textContent = `Note: ${product.note}`;
+
+        let buttonPanier = document.createElement('button')
+        buttonPanier.classList.add('boutonAddPanier');
+        buttonPanier.textContent='Ajouter au panier';
+
+        let divProduit = document.createElement('div');
+        divProduit.classList.add('produitUnitaire')
+
+        
+        divProduit.appendChild(imageInfo);
+        divProduit.appendChild(titleP);
+        divProduit.appendChild(prixP);
+        divProduit.appendChild(noteP);
+        divProduit.appendChild(buttonPanier);
+        affichageProduit.appendChild(divProduit);
+        affichageProduit.style.display = 'block';
+    });
+ }  
    
    
    
