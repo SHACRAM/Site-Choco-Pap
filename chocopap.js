@@ -239,6 +239,7 @@ var allProduct = [
           "ingredients": "Caramel au beurre salé avec un coeur en poudre chocolatée. Allergènes : SOJA, LAIT (LACTOSE). Contient de l'anhydride sulfureux"
       }
   ]
+var listeDiv = [];
 var checkBoxAll = document.querySelector('input[name="ch-all"]');
 var affichageProduit= document.querySelector("#affichageProduit");
 checkBoxAll.addEventListener("change", function(){
@@ -259,6 +260,7 @@ var produitValide = new Set();
 var checkBoxs = document.querySelectorAll('input[name="category"]');
 checkBoxs.forEach(checkBox=>{
     checkBox.addEventListener('change', function(){
+        listeDiv = [];
         var categories = [];
         checkBoxs.forEach(checkBox=>{
             if(checkBox.checked){
@@ -290,10 +292,12 @@ checkBoxs.forEach(checkBox=>{
                     titleP.classList.add('descriptionProduit');
                     titleP.textContent = product.title;
                     
-            
-                    let prixP = document.createElement('p');
+                    
+                    var prixP = document.createElement('p');
                     prixP.classList.add("prixProduit");
                     prixP.textContent = product.price;
+                    
+                    
             
                     let noteP = document.createElement('p');
                     noteP.classList.add("noteProduit");
@@ -305,6 +309,7 @@ checkBoxs.forEach(checkBox=>{
             
                     let divProduit = document.createElement('div');
                     divProduit.classList.add('produitUnitaire')
+                    listeDiv.push(divProduit);
             
                     
                     divProduit.appendChild(imageInfo);
@@ -324,6 +329,7 @@ checkBoxs.forEach(checkBox=>{
 })
 
  function addProduct(){
+
     allProduct.forEach((product) => {
         let imageInfo = document.createElement('img');
         imageInfo.src = product.image;
@@ -338,16 +344,17 @@ checkBoxs.forEach(checkBox=>{
         prixP.classList.add("prixProduit");
         prixP.textContent = product.price;
 
-        let noteP = document.createElement('p');
+        var noteP = document.createElement('p');
         noteP.classList.add("noteProduit");
         noteP.textContent = `Note: ${product.note}`;
 
-        let buttonPanier = document.createElement('button')
+        var buttonPanier = document.createElement('button')
         buttonPanier.classList.add('boutonAddPanier');
         buttonPanier.textContent='Ajouter au panier';
 
-        let divProduit = document.createElement('div');
+        var divProduit = document.createElement('div');
         divProduit.classList.add('produitUnitaire')
+        listeDiv.push(divProduit);
 
         
         divProduit.appendChild(imageInfo);
@@ -362,16 +369,43 @@ checkBoxs.forEach(checkBox=>{
    
    
    
-   
-   
+/*filtre prix */
+document.addEventListener('DOMContentLoaded', function(){
+    var prixMin = document.getElementById('prixMin');
+    var prixMax = document.getElementById('prixMax');
+    var prixAll = document.querySelectorAll('input[name="prix"]');
+    prixMin.value = 1;
+    prixMax.value = 30;
+
+    prixAll.forEach(input=>{
+        input.addEventListener('input', function(){
+            var [min, max]=detectInput();
+            console.log(min, max);
+            listeDiv.forEach(div=>{
+                var prixProduit = parseFloat(div.querySelector('.prixProduit').textContent)
+                console.log(prixProduit);
+                if(prixProduit >= min && prixProduit <= max){
+                    div.style.display = 'block';
+                } else{
+                    div.style.display = 'none';
+                }
+                
+            
+            })
+        })
+    })
+});
     
+function detectInput(){
+    var nombreMin = document.getElementById('prixMin');
+    var nombreMax = document.getElementById('prixMax');
 
+    var nombreActuelMin = parseFloat(nombreMin.value);
+    var nombreActuelMax = parseFloat(nombreMax.value);
 
+    return[nombreActuelMin, nombreActuelMax];
 
-
-
-    
-    
+}
 
     
 
