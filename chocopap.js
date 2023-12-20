@@ -321,6 +321,7 @@ checkBoxs.forEach(checkBox=>{
                     affichageProduit.style.display = 'block'
 
                     produitValide.add(product.id);
+                    majDisplay();
                 }
             });
         })
@@ -364,10 +365,9 @@ checkBoxs.forEach(checkBox=>{
         divProduit.appendChild(buttonPanier);
         affichageProduit.appendChild(divProduit);
         affichageProduit.style.display = 'block';
+        
     });
  }  
-   
-   
    
 /*filtre prix */
 document.addEventListener('DOMContentLoaded', function(){
@@ -379,8 +379,15 @@ document.addEventListener('DOMContentLoaded', function(){
 
     prixAll.forEach(input=>{
         input.addEventListener('input', function(){
-            var [min, max]=detectInput();
-            console.log(min, max);
+            majDisplay();
+        })
+    })
+});
+    
+
+
+function majDisplay(){
+    var [min, max]=detectInput();
             listeDiv.forEach(div=>{
                 var prixProduit = parseFloat(div.querySelector('.prixProduit').textContent)
                 console.log(prixProduit);
@@ -389,13 +396,10 @@ document.addEventListener('DOMContentLoaded', function(){
                 } else{
                     div.style.display = 'none';
                 }
-                
-            
             })
-        })
-    })
-});
-    
+}
+
+
 function detectInput(){
     var nombreMin = document.getElementById('prixMin');
     var nombreMax = document.getElementById('prixMax');
@@ -404,7 +408,6 @@ function detectInput(){
     var nombreActuelMax = parseFloat(nombreMax.value);
 
     return[nombreActuelMin, nombreActuelMax];
-
 }
 
     
