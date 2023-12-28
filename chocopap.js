@@ -55,7 +55,42 @@ $(function(){
 
 /*filtre "tous" */
 document.addEventListener('DOMContentLoaded', function(){
-    addProduct();
+    allProduct.forEach((product) => {
+        let imageInfo = document.createElement('img');
+        imageInfo.src = product.image;
+        imageInfo.alt = product.description;
+
+        var titleP = document.createElement('p');
+        titleP.classList.add('descriptionProduit');
+        titleP.textContent = product.title;
+        
+
+        let prixP = document.createElement('p');
+        prixP.classList.add("prixProduit");
+        prixP.textContent = product.price;
+
+        var noteP = document.createElement('p');
+        noteP.classList.add("noteProduit");
+        noteP.textContent = `Note: ${product.note}`;
+
+        var buttonPanier = document.createElement('button')
+        buttonPanier.classList.add('boutonAddPanier');
+        buttonPanier.textContent='Ajouter au panier';
+
+        var divProduit = document.createElement('div');
+        divProduit.classList.add('produitUnitaire')
+        listeDiv.push(divProduit);
+
+        
+        divProduit.appendChild(imageInfo);
+        divProduit.appendChild(titleP);
+        divProduit.appendChild(prixP);
+        divProduit.appendChild(noteP);
+        divProduit.appendChild(buttonPanier);
+        affichageProduit.appendChild(divProduit);
+        affichageProduit.style.display = 'block';
+    });
+    
 })
 var allProduct = [
     {
@@ -252,6 +287,7 @@ checkBoxAll.addEventListener("change", function(){
         checkBox.checked = false;
     })
     addProduct();
+    
 });
 
 /*filtre categories */
@@ -299,7 +335,7 @@ checkBoxs.forEach(checkBox=>{
                     
                     
             
-                    let noteP = document.createElement('p');
+                    var noteP = document.createElement('p');
                     noteP.classList.add("noteProduit");
                     noteP.textContent = `Note: ${product.note}`;
             
@@ -322,6 +358,7 @@ checkBoxs.forEach(checkBox=>{
 
                     produitValide.add(product.id);
                     majDisplay();
+                    
                 }
             });
         })
@@ -365,7 +402,7 @@ checkBoxs.forEach(checkBox=>{
         divProduit.appendChild(buttonPanier);
         affichageProduit.appendChild(divProduit);
         affichageProduit.style.display = 'block';
-        
+        majDisplay();
     });
  }  
    
@@ -383,15 +420,15 @@ document.addEventListener('DOMContentLoaded', function(){
         })
     })
 });
-    
-
 
 function majDisplay(){
-    var [min, max]=detectInput();
+    var [minP, maxP, minN, maxN ]=detectInput();
             listeDiv.forEach(div=>{
-                var prixProduit = parseFloat(div.querySelector('.prixProduit').textContent)
-                console.log(prixProduit);
-                if(prixProduit >= min && prixProduit <= max){
+                var prixProduit = parseFloat(div.querySelector('.prixProduit').textContent);
+                var noteProduit = div.querySelector('.noteProduit');
+                var paragrapheNote= noteProduit.textContent.match(/\d+/);
+                var noteInt = parseInt(paragrapheNote[0]);
+                if(prixProduit >= minP && prixProduit <= maxP && noteInt>= minN && noteInt<= maxN){
                     div.style.display = 'block';
                 } else{
                     div.style.display = 'none';
@@ -399,25 +436,34 @@ function majDisplay(){
             })
 }
 
-
 function detectInput(){
     var nombreMin = document.getElementById('prixMin');
     var nombreMax = document.getElementById('prixMax');
+    var noteMin= document.getElementById('noteMin');
+    var noteMax =document.getElementById('noteMax');
 
     var nombreActuelMin = parseFloat(nombreMin.value);
     var nombreActuelMax = parseFloat(nombreMax.value);
+    var noteMinActuelle = parseInt(noteMin.value);
+    var noteMaxActuelle = parseInt(noteMax.value);
 
-    return[nombreActuelMin, nombreActuelMax];
+    return[nombreActuelMin, nombreActuelMax, noteMinActuelle, noteMaxActuelle];
 }
 
     
+/*Filtre Note */
+document.addEventListener('DOMContentLoaded', function(){
+    var notes = document.querySelectorAll('#noteMin, #noteMax');
+    notes.forEach(note=>{
+        note.addEventListener('change', function(){
+            majDisplay();
+                
+        })
+    })
+})
 
 
 
-
-
-
-   
 
 
 
