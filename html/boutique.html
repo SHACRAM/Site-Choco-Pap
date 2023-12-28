@@ -37,61 +37,61 @@
         <div class="content">
             <!-- FILTRES -->
             <div id="filter">
-                <div class="text-style3">Cat&eacute;gories</div>
-                <div class="zone-filtre">
+                <div class="text-style3" id="toggleCategories">Cat&eacute;gories</div>
+                <div class="zone-filtre" id="zone-filtre-categories">
                     <div>
-                        <input type="checkbox" id="ch-all">
+                        <input type="checkbox" name="ch-all" value="all" checked>
                         <label for="ch-all" class="text-style4">Tous</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="ch-chocolat-blanc">
+                        <input type="checkbox" name="category" value="blanc">
                         <label for="ch-chocolat-blanc" class="text-style4">Chocolat blanc</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="ch-chocolat-lait">
+                        <input type="checkbox" name="category" value="lait">
                         <label for="ch-chocolat-lait" class="text-style4">Chocolat au lait</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="ch-chocolat-noir">
+                        <input type="checkbox" name="category" value="noir">
                         <label for="ch-chocolat-noir" class="text-style4">Chocolat noir</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="ch-noix">
+                        <input type="checkbox" name="category" value="noix">
                         <label for="ch-noix" class="text-style4">Noix/Noisette</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="ch-fruit">
+                        <input type="checkbox" name="category" value="fruit">
                         <label for="ch-fruit" class="text-style4">Fruit</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="ch-caramel">
+                        <input type="checkbox" name="category" value="caramel">
                         <label for="ch-caramel" class="text-style4">Caramel</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="ch-liqueur">
+                        <input type="checkbox" name="category" value="liqueur" >
                         <label for="ch-liqueur" class="text-style4">Liqueur</label>
                     </div>
                 </div>
-                <div class="text-style3">Prix</div>
-                <div class="zone-filtre">
+                <div class="text-style3" id="togglePrix">Prix</div>
+                <div class="zone-filtre" id="zone-filtre-prix">
                     <div>
                         <div>
                             <span class="text-style4">Prix min</span>
-                            <input type="number" id="prix-min">
+                            <input type="number" name="prix" id="prixMin" oninput="detectInput()">
                         </div>
                         <div>
                             <span class="text-style4">Prix max</span>
-                            <input type="number" id="prix-max">
+                            <input type="number" name="prix" id="prixMax" oninput="detectInput()">
                         </div> 
                     </div>
                 </div>
-                <div class="text-style3">Notes</div>
-                <div class="zone-filtre">
+                <div class="text-style3" id="toggleNote">Notes</div>
+                <div class="zone-filtre" id="zone-filtre-note">
                     <div>
                         <div>
-                            <span class="text-style4">Note min</span>
-                            <select>
-                                <option value="1">1</option>
+                            <label for="noteMin" class="text-style4">Note min</label>
+                            <select id="noteMin">
+                                <option value="1" selected>1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
                                 <option value="4">4</option>
@@ -99,27 +99,21 @@
                             </select>
                         </div>
                         <div>
-                            <span class="text-style4">Note max</span>
-                            <select>
+                            <label for="noteMax" class="text-style4">Note max</label>
+                            <select id="noteMax">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
                                 <option value="4">4</option>
-                                <option value="5">5</option>
+                                <option value="5" selected>5</option>
                             </select>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- PRODUIT-->
-            <div id="afichageProduit">
-                <div>
-                    <div class="detailProduit">
-                        <div>
-                            
-                        </div>
-                    </div>
-                </div>
+            <div id="affichageProduit">
+                
 
                 <!-- TODO : Ajouter les produits de façon dynamique-->
             </div>

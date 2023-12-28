@@ -29,7 +29,7 @@ body {
     margin: 1em 0em 0em 1em;
 }
 
-#header, .content {
+#header{
     display: flex;
     justify-content: space-between;
     padding-right: 1em;
@@ -120,6 +120,31 @@ body {
     transform: translate(-50%, -50%);
     box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.9);
 }
+
+/*filtres*/
+.content{
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+#affichageProduit div img{
+   width: 20%;
+}
+
+#affichageProduit{
+    display: flex;
+    
+}
+
+.produitUnitaire {
+    display: flex;
+    flex-direction: column;
+}
+.boutonAddPanier{
+    width:6em;
+}
+
 #footer{
     display: flex;
     flex-direction: column;
@@ -184,8 +209,6 @@ body {
 }
 
 #filter {
-    border: 2px solid;
-    border-color: #2C1E1E;
     padding: 20px;
 }
 
@@ -230,4 +253,12 @@ body {
         margin-top: 0;
     }
     
+}
+
+
+/*médias query de la page boutique*/
+@media  only screen and (max-width: 896px){
+    .zone-filtre{
+        display: none;
+    }
 }
