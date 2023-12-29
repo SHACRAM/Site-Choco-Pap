@@ -3,6 +3,10 @@
 $(function(){
     $("#menuBurger").on("click", function(){
         $("#headerMobile").stop(true, true).slideToggle();
+        if (!panier.classList.contains('closed')){
+            panier.classList.add('closed');
+            affichageProduit.style.display = 'block';
+        }
     }) 
 });
 
@@ -53,7 +57,7 @@ $(function(){
 
 
 
-/*filtre "tous" */
+/*filtre "tous les produits" */
 document.addEventListener('DOMContentLoaded', function(){
     allProduct.forEach((product) => {
         let imageInfo = document.createElement('img');
@@ -461,6 +465,25 @@ document.addEventListener('DOMContentLoaded', function(){
         })
     })
 })
+
+
+
+/*Gestion du panier */
+var panier = document.getElementById('affichagePanier');
+function ouvrirPanier(){
+    let headerMobile = document.getElementById('headerMobile');
+    panier.classList.remove('closed');
+    headerMobile.style.display = 'none';
+    affichageProduit.style.display = 'none';  
+}
+
+var imageCroix = document.getElementById('imageCroix');
+imageCroix.addEventListener('click', function(){
+    panier.classList.add('closed');
+    affichageProduit.style.display = 'block';
+})
+
+
 
 
 

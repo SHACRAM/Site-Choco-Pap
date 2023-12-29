@@ -17,7 +17,7 @@
                     <li><a href="boutique.html" class="text-style1">Boutique</a></li>
                     <li><a href="#" class="text-style1" class="quantitePanier">2</a></li>
                 </ul>
-                <img src="../images/panier.png" alt="panier" class="imgPanier">
+                <img src="../images/panier.png" alt="panier" class="imgPanier" onclick="ouvrirPanier()">
             </div>
         </div>
         <div id="headerMobile">
@@ -27,14 +27,14 @@
             </ul>
             <div id="panier">
                 <ul id="mainNavMobilePanier">
-                    <li><a href="#" class="text-style1" id="panierMobile">Panier</a></li>
+                    <li><a href="#" class="text-style1" id="panierMobile" onclick="ouvrirPanier()">Panier</a></li>
                     <li><a class="text-style1" class="quantitePanier">2</a></li>
                 </ul>
                 <img src="../images/panier.png" alt="panier" class="imgPanier">
             </div>
         </div>
 
-        <div class="content">
+        <section class="content">
             <!-- FILTRES -->
             <div id="filter">
                 <div class="text-style3" id="toggleCategories">Cat&eacute;gories</div>
@@ -112,12 +112,20 @@
                 </div>
             </div>
             <!-- PRODUIT-->
-            <div id="affichageProduit">
-                
-
-                <!-- TODO : Ajouter les produits de façon dynamique-->
+            <div id="affichageProduit"></div>
+        </section>
+        <section id="affichagePanier" class="closed">
+            <div>
+                <img src="../images/circle-xmark-regular.svg" alt="Croix de fermeture de la page panier" id="imageCroix">
+                <h1>Panier</h1>
             </div>
-        </div>
+            <div id="zonePanier" class="text-style3"></div>
+            <div>
+                <p>Total : </p>
+                <button>Réinitialiser le panier</button>
+                <button>Valider le panier</button>
+            </div>
+        </section>
         <!-- FOOTER -->
         <div id="footer">
             <div id="informations">
