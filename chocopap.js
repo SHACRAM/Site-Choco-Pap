@@ -3,10 +3,7 @@
 $(function(){
     $("#menuBurger").on("click", function(){
         $("#headerMobile").stop(true, true).slideToggle();
-        if (!panier.classList.contains('closed')){
-            panier.classList.add('closed');
-            affichageProduit.style.display = 'block';
-        }
+       
     }) 
 });
 
@@ -469,53 +466,29 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
 /*Gestion du panier */
-
-
-/*function ouvrirPanier(){
-    let headerMobile = document.getElementById('headerMobile');
-    panier.style.display = 'block';
-    panier.classList.remove('closed');
-    panier.classList.add('opened');
-    headerMobile.style.display = 'none';
-    affichageProduit.style.display = 'none'; 
-    footer.style.marginTop = '30em';
-    
-}*/
+document.addEventListener('DOMContentLoaded', function(){
 var panier = document.getElementById('affichagePanier');
 var panierMobile = document.getElementById('panierMobile')
+
 panierMobile.addEventListener('click', function(){
     panier.classList.remove('closed');
     panier.classList.add('opened');
     headerMobile.style.display = 'none';
-    affichageProduit.style.display = 'none'; 
-    footer.style.marginTop = '30em';
-    panierVisible();
+    affichageProduit.style.display = 'none';
+    filter.style.display = 'none';
+    
 })
-
-
-
-
 
 var imageCroix = document.getElementById('imageCroix');
 imageCroix.addEventListener('click', function(){
     panier.classList.add('closed');
     panier.classList.remove('opened');
     affichageProduit.style.display = 'block';
+    filter.style.display = 'block';
     footer.style.marginTop = 0;
-    panierVisible();
+})
 
 })
-function panierVisible (){
-    panier.addEventListener('transitionend', function() {
-        if (panier.classList.contains('closed')) {
-            panier.style.display = 'none'
-        }
-        
-        panier.style.display = 'block';
-        
-    });
-}
-
 
 
 
