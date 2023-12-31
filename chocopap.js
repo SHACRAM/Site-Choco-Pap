@@ -469,19 +469,59 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
 /*Gestion du panier */
-var panier = document.getElementById('affichagePanier');
-function ouvrirPanier(){
+
+
+/*function ouvrirPanier(){
     let headerMobile = document.getElementById('headerMobile');
+    panier.style.display = 'block';
     panier.classList.remove('closed');
+    panier.classList.add('opened');
     headerMobile.style.display = 'none';
-    affichageProduit.style.display = 'none';  
-}
+    affichageProduit.style.display = 'none'; 
+    footer.style.marginTop = '30em';
+    
+}*/
+var panier = document.getElementById('affichagePanier');
+var panierMobile = document.getElementById('panierMobile')
+panierMobile.addEventListener('click', function(){
+    panier.classList.remove('closed');
+    panier.classList.add('opened');
+    headerMobile.style.display = 'none';
+    affichageProduit.style.display = 'none'; 
+    footer.style.marginTop = '30em';
+    panierVisible();
+})
+
+
+
+
 
 var imageCroix = document.getElementById('imageCroix');
 imageCroix.addEventListener('click', function(){
     panier.classList.add('closed');
+    panier.classList.remove('opened');
     affichageProduit.style.display = 'block';
+    footer.style.marginTop = 0;
+    panierVisible();
+
 })
+function panierVisible (){
+    panier.addEventListener('transitionend', function() {
+        if (panier.classList.contains('closed')) {
+            panier.style.display = 'none'
+        }
+        
+        panier.style.display = 'block';
+        
+    });
+}
+
+
+
+
+
+
+
 
 
 
