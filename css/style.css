@@ -129,19 +129,18 @@ body {
 }
 
 #affichageProduit div img{
-   width: 20%;
+   width:14em;
+   height: 10em;
+}
+
+.boutonAddPanier{
+    width:6em;
 }
 
 #affichageProduit{
     display: flex;
-}
-
-.produitUnitaire {
-    display: flex;
     flex-direction: column;
-}
-.boutonAddPanier{
-    width:6em;
+    width: 100%;
 }
 
 #affichagePanier{
@@ -281,4 +280,32 @@ body {
     .zone-filtre{
         display: none;
     }
+}
+
+
+@media only screen and (min-width: 897px){
+    .content{
+        display: flex;
+        flex-direction: row;
+    }
+
+    #affichageProduit{
+        display:flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        gap: 8em;
+    }
+
+    #affichagePanier{
+        position: fixed;
+        top: 5.5em;
+        right: 0;
+        width: 30%;
+        height: 70%;
+        box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+        border-radius: 6px;
+    }
+
+
 }

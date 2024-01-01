@@ -2,6 +2,7 @@
 <html lang="fr">
     <head>
         <title>Boutique</title>
+        <link rel="stylesheet" href="../css/normalize.css">
         <link rel="stylesheet" href="../css/style.css">
         <script src="../node_modules/jquery/dist/jquery.js"defer></script>
         <script src="../chocopap.js" defer></script>
@@ -17,7 +18,7 @@
                     <li><a href="boutique.html" class="text-style1">Boutique</a></li>
                     <li><a href="#" class="text-style1" class="quantitePanier">2</a></li>
                 </ul>
-                <img src="../images/panier.png" alt="panier" class="imgPanier" onclick="ouvrirPanier()">
+                <img src="../images/panier.png" alt="panier" class="imgPanier" id="panierDesktop" >
             </div>
         </div>
         <div id="headerMobile">
@@ -27,7 +28,7 @@
             </ul>
             <div id="panier">
                 <ul id="mainNavMobilePanier">
-                    <li><a href="#" class="text-style1" id="panierMobile">Panier</a></li>
+                    <li><a href="#" class="text-style1" id="panierMobile" >Panier</a></li>
                     <li><a class="text-style1" class="quantitePanier">2</a></li>
                 </ul>
                 <img src="../images/panier.png" alt="panier" class="imgPanier">

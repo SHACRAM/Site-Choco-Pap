@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function(){
         divProduit.appendChild(noteP);
         divProduit.appendChild(buttonPanier);
         affichageProduit.appendChild(divProduit);
-        affichageProduit.style.display = 'block';
+        affichageProduit.style.display = 'flex';
     });
     
 })
@@ -355,7 +355,7 @@ checkBoxs.forEach(checkBox=>{
                     divProduit.appendChild(noteP);
                     divProduit.appendChild(buttonPanier);
                     affichageProduit.appendChild(divProduit);
-                    affichageProduit.style.display = 'block'
+                    affichageProduit.style.display = 'flex'
 
                     produitValide.add(product.id);
                     majDisplay();
@@ -402,7 +402,7 @@ checkBoxs.forEach(checkBox=>{
         divProduit.appendChild(noteP);
         divProduit.appendChild(buttonPanier);
         affichageProduit.appendChild(divProduit);
-        affichageProduit.style.display = 'block';
+        affichageProduit.style.display = 'flex';
         majDisplay();
     });
  }  
@@ -465,7 +465,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
 
-/*Gestion du panier */
+/*Gestion du panier mobile */
 document.addEventListener('DOMContentLoaded', function(){
 var panier = document.getElementById('affichagePanier');
 var panierMobile = document.getElementById('panierMobile')
@@ -481,20 +481,30 @@ panierMobile.addEventListener('click', function(){
 
 var imageCroix = document.getElementById('imageCroix');
 imageCroix.addEventListener('click', function(){
+    if(affichageProduit.style.width = '50%'){
+        affichageProduit.style.width = '100%';
+    }
     panier.classList.add('closed');
     panier.classList.remove('opened');
-    affichageProduit.style.display = 'block';
+    affichageProduit.style.display = 'flex';
     filter.style.display = 'block';
     footer.style.marginTop = 0;
+    
+})
+
+
+/*Gestion du panier desktop */
+var panier = document.getElementById('affichagePanier');
+var panierDesktop = document.getElementById('panierDesktop')
+
+panierDesktop.addEventListener('click', function(){
+    panier.classList.remove('closed');
+    panier.classList.add('opened');
+    affichageProduit.style.width = '50%';
+      
 })
 
 })
-
-
-
-
-
-
 
 
 
