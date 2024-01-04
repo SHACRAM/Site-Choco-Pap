@@ -29,34 +29,70 @@ $(function(){
 /*Page produits*/
 
 /*filtre deroulant catégories*/ 
+document.addEventListener('DOMContentLoaded', function(){
+    var largeurEcranResponsive = window.innerWidth;
 
-$(function(){
-    $("#toggleCategories").on("click", function(){
-        $("#zone-filtre-categories").stop(true, true).slideToggle();
-    }) 
+    if (largeurEcranResponsive <= 896) {
+        $("#zone-filtre-categories, #zone-filtre-prix, #zone-filtre-note").hide();
+    }
+    window.addEventListener('resize', function(){
+        largeurEcranResponsive = window.innerWidth;
+        if (largeurEcranResponsive <= 896) {
+            $("#zone-filtre-categories, #zone-filtre-prix, #zone-filtre-note").hide();
+        } else {
+            $("#zone-filtre-categories, #zone-filtre-prix, #zone-filtre-note").show();
+        }
+    });
+
+    /*filtre deroulant catégories */
+    $(function(){
+        $("#toggleCategories").on("click", function(){
+            $("#zone-filtre-categories").stop(true, true).slideToggle();
+        }) 
+    });
+
+    /*filtre  deroulant prix*/ 
+    $(function(){
+        $("#togglePrix").on("click", function(){
+            $("#zone-filtre-prix").stop(true, true).slideToggle();
+            var prixSizeMin = document.getElementById('prixMin');
+            var prixSizeMax = document.getElementById('prixMax');
+            prixSizeMin.style.width = '6em';
+            prixSizeMax.style.width = '6em';
+        }) 
+    });
+
+    /*filtre deroulant note*/ 
+    $(function(){
+        $("#toggleNote").on("click", function(){
+            $("#zone-filtre-note").stop(true, true).slideToggle();
+        }) 
+    });
 });
 
-/*filtre  deroulant prix*/ 
-$(function(){
-    $("#togglePrix").on("click", function(){
-        $("#zone-filtre-prix").stop(true, true).slideToggle();
-    }) 
-});
-
-/*filtre deroulant note*/ 
-$(function(){
-    $("#toggleNote").on("click", function(){
-        $("#zone-filtre-note").stop(true, true).slideToggle();
-    }) 
-});
-
-
-
-
+document.addEventListener('DOMContentLoaded', function(){
+    var menuDeroulantAll = document.querySelectorAll('.menuDeroulantAll');
+    menuDeroulantAll.forEach(menu =>{
+        menu.addEventListener('click', function(){
+            var chevron = menu.querySelector('img');
+            if(chevron.classList.contains('hidden')){
+                chevron.classList.remove('hidden');
+                chevron.classList.add('visible')
+            } else {
+                chevron.classList.remove('visible')
+                chevron.classList.add('hidden');
+            }
+        })
+    })
+})
 
 /*filtre "tous les produits" */
 document.addEventListener('DOMContentLoaded', function(){
     allProduct.forEach((product) => {
+        let id = document.createElement('p');
+        id.classList.add('id');
+        id.textContent = product.id;
+
         let imageInfo = document.createElement('img');
         imageInfo.src = product.image;
         imageInfo.alt = product.description;
@@ -68,11 +104,11 @@ document.addEventListener('DOMContentLoaded', function(){
 
         let prixP = document.createElement('p');
         prixP.classList.add("prixProduit");
-        prixP.textContent = product.price;
+        prixP.textContent = `${product.price} €`;
 
         var noteP = document.createElement('p');
         noteP.classList.add("noteProduit");
-        noteP.textContent = `Note: ${product.note}`;
+        noteP.textContent = `Note: ${product.note}/5`;
 
         var buttonPanier = document.createElement('button')
         buttonPanier.classList.add('boutonAddPanier');
@@ -82,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function(){
         divProduit.classList.add('produitUnitaire')
         listeDiv.push(divProduit);
 
-        
+        divProduit.appendChild(id);
         divProduit.appendChild(imageInfo);
         divProduit.appendChild(titleP);
         divProduit.appendChild(prixP);
@@ -90,6 +126,7 @@ document.addEventListener('DOMContentLoaded', function(){
         divProduit.appendChild(buttonPanier);
         affichageProduit.appendChild(divProduit);
         affichageProduit.style.display = 'flex';
+        ajoutPanier();
     });
     
 })
@@ -288,7 +325,6 @@ checkBoxAll.addEventListener("change", function(){
         checkBox.checked = false;
     })
     addProduct();
-    
 });
 
 /*filtre categories */
@@ -332,13 +368,13 @@ checkBoxs.forEach(checkBox=>{
                     
                     var prixP = document.createElement('p');
                     prixP.classList.add("prixProduit");
-                    prixP.textContent = product.price;
+                    prixP.textContent = `${product.price} €`;
                     
                     
             
                     var noteP = document.createElement('p');
                     noteP.classList.add("noteProduit");
-                    noteP.textContent = `Note: ${product.note}`;
+                    noteP.textContent = `Note: ${product.note}/5`;
             
                     let buttonPanier = document.createElement('button')
                     buttonPanier.classList.add('boutonAddPanier');
@@ -358,8 +394,7 @@ checkBoxs.forEach(checkBox=>{
                     affichageProduit.style.display = 'flex'
 
                     produitValide.add(product.id);
-                    majDisplay();
-                    
+                    majDisplay();  
                 }
             });
         })
@@ -381,11 +416,11 @@ checkBoxs.forEach(checkBox=>{
 
         let prixP = document.createElement('p');
         prixP.classList.add("prixProduit");
-        prixP.textContent = product.price;
+        prixP.textContent = `${product.price} €`;
 
         var noteP = document.createElement('p');
         noteP.classList.add("noteProduit");
-        noteP.textContent = `Note: ${product.note}`;
+        noteP.textContent = `Note: ${product.note}/5`;
 
         var buttonPanier = document.createElement('button')
         buttonPanier.classList.add('boutonAddPanier');
@@ -430,13 +465,12 @@ function majDisplay(){
                 var paragrapheNote= noteProduit.textContent.match(/\d+/);
                 var noteInt = parseInt(paragrapheNote[0]);
                 if(prixProduit >= minP && prixProduit <= maxP && noteInt>= minN && noteInt<= maxN){
-                    div.style.display = 'block';
+                    div.style.display = 'flex';
                 } else{
                     div.style.display = 'none';
                 }
             })
 }
-
 function detectInput(){
     var nombreMin = document.getElementById('prixMin');
     var nombreMax = document.getElementById('prixMax');
@@ -457,8 +491,7 @@ document.addEventListener('DOMContentLoaded', function(){
     var notes = document.querySelectorAll('#noteMin, #noteMax');
     notes.forEach(note=>{
         note.addEventListener('change', function(){
-            majDisplay();
-                
+            majDisplay();     
         })
     })
 })
@@ -476,9 +509,7 @@ panierMobile.addEventListener('click', function(){
     headerMobile.style.display = 'none';
     affichageProduit.style.display = 'none';
     filter.style.display = 'none';
-    
 })
-
 var imageCroix = document.getElementById('imageCroix');
 imageCroix.addEventListener('click', function(){
     if(affichageProduit.style.width = '50%'){
@@ -489,9 +520,17 @@ imageCroix.addEventListener('click', function(){
     affichageProduit.style.display = 'flex';
     filter.style.display = 'block';
     footer.style.marginTop = 0;
-    
 })
-
+window.addEventListener('resize', function(){
+    let largeur = window.innerWidth;
+    if(largeur){
+        panier.classList.add('closed');
+        panier.classList.remove('opened');
+        affichageProduit.style.display = 'flex';
+        filter.style.display = 'block';
+        footer.style.marginTop = 0;
+    }
+})
 
 /*Gestion du panier desktop */
 var panier = document.getElementById('affichagePanier');
@@ -500,22 +539,88 @@ var panierDesktop = document.getElementById('panierDesktop')
 panierDesktop.addEventListener('click', function(){
     panier.classList.remove('closed');
     panier.classList.add('opened');
-    affichageProduit.style.width = '50%';
-      
+    affichageProduit.style.width = '50%';  
+})
 })
 
-})
-
-
-
-
-
-
-
-
-
+/*Ajout des produits dans le panier */
+var produitAjoute = [];
+var produitAjouteUnique = new Set();
+var zonePanier = document.getElementById('zonePanier');
+function ajoutPanier() {
+    var divAffiche = document.getElementsByClassName('produitUnitaire');
     
+    Array.from(divAffiche).forEach(div => {
+        let bouton = div.querySelector('button');
+        if (!bouton.hasEventListener) {
+            bouton.addEventListener('click', function() {
+                let divProduit = this.closest('.produitUnitaire');
+                let id = divProduit.querySelector('.id');
+                produitAjoute.push(id);
+                console.log(produitAjoute);
+                Array.from(produitAjoute).forEach(produit =>{
+                    produitAjouteUnique.add(produit);
+                });
+                ajoutPanierAffichage();
+            });
+            bouton.hasEventListener = true;
+            
+        }
+       
+    })
+    
+}
+document.addEventListener('DOMContentLoaded', ajoutPanier);
 
+
+function ajoutPanierAffichage(){
+    zonePanier.innerHTML = '';
+    produitAjouteUnique.forEach(produit =>{
+        console.log(produitAjouteUnique);
+        allProduct.forEach(product=>{
+            if(produit.textContent === product.id){  
+                let imageClose = document.createElement('img');
+                imageClose.classList.add('imgClose')
+                imageClose.src = '../images/xmark-solid.svg';
+                imageClose.alt = 'croix pour supprimer le produit du panier';
+
+                let imageP = document.createElement('img')
+                imageP.classList.add('imgPanier');
+                imageP.src = product.image;
+                imageP.alt = product.description;
+
+                let nomP = document.createElement('p');
+                nomP.classList.add('titrePoduitPanier');
+                nomP.textContent = product.title;
+
+                let prixP = document.createElement('p');
+                prixP.classList.add('prixProduitPanier');
+                prixP.textContent = `${product.price} €`;
+
+                let inputNumber = document.createElement('input');
+                inputNumber.type = 'number';
+                inputNumber.name = 'quantitePanier';
+
+                let divInfo = document.createElement('div');
+                divInfo.classList.add('divInfo');
+                
+                let divProduitPanier = document.createElement('div')
+                divProduitPanier.classList.add('divProduitPanier');
+
+                divInfo.appendChild(nomP);
+                divInfo.appendChild(prixP);
+                divInfo.appendChild(inputNumber);
+
+                divProduitPanier.appendChild(imageClose);
+                divProduitPanier.appendChild(imageP);
+                divProduitPanier.appendChild(divInfo);
+
+                zonePanier.appendChild(divProduitPanier);
+
+            }
+        })
+    })
+}
 
 
 

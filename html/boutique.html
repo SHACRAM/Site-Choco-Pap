@@ -14,7 +14,7 @@
             <button id="menuBurger"><img src="../images/menuBurger.png" alt="image représentant un menu burger" id="imgMenuBurger"></button>
             <div id="header-right">
                 <ul id="mainNav">
-                    <li><a href="index.html" class="text-style1">Acceuil</a></li>
+                    <li><a href="index.html" class="text-style1">Accueil</a></li>
                     <li><a href="boutique.html" class="text-style1">Boutique</a></li>
                     <li><a href="#" class="text-style1" class="quantitePanier">2</a></li>
                 </ul>
@@ -23,7 +23,7 @@
         </div>
         <div id="headerMobile">
             <ul id="mainNavMobile">
-                <li><a href="index.html" class="text-style1">Acceuil</a></li>
+                <li><a href="index.html" class="text-style1">Accueil</a></li>
                 <li><a href="boutique.html" class="text-style1">Boutique</a></li>
             </ul>
             <div id="panier">
@@ -33,12 +33,15 @@
                 </ul>
                 <img src="../images/panier.png" alt="panier" class="imgPanier">
             </div>
+            
         </div>
-
+        <h1 class="text-style1" id="titreBoutique">Boutique</h1>
         <section class="content">
             <!-- FILTRES -->
             <div id="filter">
-                <div class="text-style3" id="toggleCategories">Cat&eacute;gories</div>
+                <div class="text-style3" id="toggleCategories" class="menuDeroulantAll">Cat&eacute;gories
+                    <img src="../images/chevron-up-solid.svg" alt="Représente un chevron vers le haut pour fermer le menu"  class="hidden">
+                </div>
                 <div class="zone-filtre" id="zone-filtre-categories">
                     <div>
                         <input type="checkbox" name="ch-all" value="all" checked>
@@ -73,42 +76,42 @@
                         <label for="ch-liqueur" class="text-style4">Liqueur</label>
                     </div>
                 </div>
-                <div class="text-style3" id="togglePrix">Prix</div>
+                <div class="text-style3" id="togglePrix" class="menuDeroulantAll">Prix
+                    <img src="../images/chevron-up-solid.svg" alt="Représente un chevron vers le haut pour fermer le menu" class="hidden">
+                </div>
                 <div class="zone-filtre" id="zone-filtre-prix">
                     <div>
-                        <div>
-                            <span class="text-style4">Prix min</span>
-                            <input type="number" name="prix" id="prixMin" oninput="detectInput()">
-                        </div>
-                        <div>
-                            <span class="text-style4">Prix max</span>
-                            <input type="number" name="prix" id="prixMax" oninput="detectInput()">
-                        </div> 
+                        <span class="text-style4">Prix min</span>
+                        <input type="number" name="prix" id="prixMin" oninput="detectInput()">
                     </div>
+                    <div>
+                        <span class="text-style4">Prix max</span>
+                        <input type="number" name="prix" id="prixMax" oninput="detectInput()">
+                    </div>  
                 </div>
-                <div class="text-style3" id="toggleNote">Notes</div>
+                <div class="text-style3" id="toggleNote" class="menuDeroulantAll">Notes
+                    <img src="../images/chevron-up-solid.svg" alt="Représente un chevron vers le haut pour fermer le menu" class="hidden">
+                </div>
                 <div class="zone-filtre" id="zone-filtre-note">
                     <div>
-                        <div>
-                            <label for="noteMin" class="text-style4">Note min</label>
-                            <select id="noteMin">
-                                <option value="1" selected>1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="noteMax" class="text-style4">Note max</label>
-                            <select id="noteMax">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5" selected>5</option>
-                            </select>
-                        </div>
+                        <label for="noteMin" class="text-style4">Note min</label>
+                        <select id="noteMin">
+                            <option value="1" selected>1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="noteMax" class="text-style4">Note max</label>
+                        <select id="noteMax">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5" selected>5</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -116,15 +119,14 @@
             <div id="affichageProduit"></div>
         </section>
         <section id="affichagePanier" class="closed">
-            <div>
-                <img src="../images/circle-xmark-regular.svg" alt="Croix de fermeture de la page panier" id="imageCroix">
-                <h1>Panier</h1>
-            </div>
+            <img src="../images/rectangle-xmark-regular.svg" alt="Croix de fermeture de la page panier" id="imageCroix">
+            <h2 id="titrePanier">Panier</h2>
             <div id="zonePanier" class="text-style3"></div>
-            <div>
-                <p>Total : </p>
-                <button>Réinitialiser le panier</button>
-                <button>Valider le panier</button>
+            <div id="piedPanier">
+                <p class="text-style3">Total : </p>
+                <button class="boutonPanier">Réinitialiser le panier</button>
+                <button class="boutonPanier">Valider le panier</button>
+                
             </div>
         </section>
         <!-- FOOTER -->
