@@ -45,6 +45,7 @@ body {
     display: flex;
     list-style: none;
     gap: 2em;
+    margin-bottom: 0;
 }
 #mainNavMobile{
     list-style: none;
@@ -61,6 +62,7 @@ body {
     display: flex;
     padding-left: 0.5em;
     gap: 1em;
+    margin-bottom: 0;
 }
 
 
@@ -99,7 +101,13 @@ body {
 .imgPanier{
     width: 1.8em;
     height: 1.8em;
-    
+}
+.panierP{
+    margin-top: 0.1em;
+    margin-right: 0.2em;
+    background-color: var(--bleu);
+    padding: 0.1em 0.4em 0.1em 0.4em;
+    border-radius: 50%;
 }
 
 #header-logo{
