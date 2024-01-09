@@ -45,6 +45,7 @@ body {
     display: flex;
     list-style: none;
     gap: 2em;
+    margin-bottom: 0;
 }
 #mainNavMobile{
     list-style: none;
@@ -61,6 +62,7 @@ body {
     display: flex;
     padding-left: 0.5em;
     gap: 1em;
+    margin-bottom: 0;
 }
 
 
@@ -95,11 +97,49 @@ body {
     align-items: center;
     
 }
+#imageCroix{
+    width: 3em;
+    height: 3em;
+    padding: 1em;
+}
 
 .imgPanier{
     width: 1.8em;
     height: 1.8em;
-    
+}
+.imgDelete{
+   width: 2em;
+   height: 2em;
+}
+.imgProduitPanier{
+    width: 7em;
+    height: 5em;
+}
+.divProduitPanier{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 1em;
+}
+.divInfo{
+    display: flex;
+    flex-direction: column;
+    gap: 0.7em;
+    width: 4em;
+}
+.divInfo input{
+    width: 3em;
+}
+.divInfo p{
+    margin: 0;
+}
+
+.panierP{
+    margin-top: 0.1em;
+    margin-right: 0.2em;
+    background-color: var(--bleu);
+    padding: 0.1em 0.4em 0.1em 0.4em;
+    border-radius: 50%;
 }
 
 #header-logo{
@@ -224,11 +264,7 @@ body {
     overflow: scroll;
 }
  
- #affichagePanier img{
-    width: 4em;
-    height: 4em;
-    padding: 1em;
- }
+ 
  .descriptionProduit{
     font-size: 1.8rem;
  }
@@ -405,7 +441,7 @@ body {
         gap: 5em;
         justify-content: center;
     }
-    #affichagePanier img{
+    #imageCroix{
         width: 3em;
         height: 3em;
         padding: 1em;
@@ -415,10 +451,13 @@ body {
         position: fixed;
         top: 5.5em;
         right: 0;
-        width: 25%;
-        height: 80%;
+        width: 30%;
+        height: 100%;
         box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
         border-radius: 6px;
+    }
+    #titrePanier{
+        margin-top: 0;
     }
     .boutonPanier{
         width: 80%;
