@@ -103,46 +103,10 @@ document.addEventListener('DOMContentLoaded', function(){
 document.addEventListener('DOMContentLoaded', function(){
     majQuantitePanier();
     allProduct.forEach((product) => {
-        let id = document.createElement('p');
-        id.classList.add('id');
-        id.textContent = product.id;
-
-        let imageInfo = document.createElement('img');
-        imageInfo.src = product.image;
-        imageInfo.alt = product.description;
-
-        var titleP = document.createElement('p');
-        titleP.classList.add('descriptionProduit');
-        titleP.textContent = product.title;
-        
-
-        let prixP = document.createElement('p');
-        prixP.classList.add("prixProduit");
-        prixP.textContent = `${product.price} €`;
-
-        var noteP = document.createElement('p');
-        noteP.classList.add("noteProduit");
-        noteP.textContent = `Note: ${product.note}/5`;
-
-        var buttonPanier = document.createElement('button')
-        buttonPanier.classList.add('boutonAddPanier');
-        buttonPanier.textContent='Ajouter au panier';
-
-        var divProduit = document.createElement('div');
-        divProduit.classList.add('produitUnitaire')
-        listeDiv.push(divProduit);
-
-        divProduit.appendChild(id);
-        divProduit.appendChild(imageInfo);
-        divProduit.appendChild(titleP);
-        divProduit.appendChild(prixP);
-        divProduit.appendChild(noteP);
-        divProduit.appendChild(buttonPanier);
-        affichageProduit.appendChild(divProduit);
-        affichageProduit.style.display = 'flex';
-        ajoutPanier();
+        createHtmlProduct(product); 
     });
     
+
 })
 var allProduct = [{
     "id": "1" ,
@@ -336,8 +300,7 @@ checkBoxAll.addEventListener("change", function(){
     checkBoxs.forEach(checkBox=>{
         checkBox.checked = false;
     })
-    addProduct();
-    
+    addProduct();  
 });
 
 /*filtre categories en fonction des checkBox */
@@ -352,18 +315,15 @@ checkBoxs.forEach(checkBox=>{
             if(checkBox.checked){
                 categories.push(checkBox.value);
             }
-            else if (!checkBox.checked){
+            else {
                 affichageProduit.innerHTML = '';
                 produitValide.clear();
-                checkBoxAll.checked;
-                
+                checkBoxAll.checked;  
             }
         });
-
         var allUnchecked = Array.from(checkBoxs).every(function(checkBox){
             return !checkBox.checked;
         });
-
         checkBoxAll.checked = allUnchecked;
         if (allUnchecked){
             addProduct();
@@ -371,49 +331,12 @@ checkBoxs.forEach(checkBox=>{
         categories.forEach(category=>{
             allProduct.forEach(product =>{
                 if(product.category[category]===true && !produitValide.has(product.id)){
-                    let imageInfo = document.createElement('img');
-                    imageInfo.src = product.image;
-                    imageInfo.alt = product.description;
-            
-                    var titleP = document.createElement('p');
-                    titleP.classList.add('descriptionProduit');
-                    titleP.textContent = product.title;
-                    
-                    
-                    var prixP = document.createElement('p');
-                    prixP.classList.add("prixProduit");
-                    prixP.textContent = `${product.price} €`;
-                    
-                    
-            
-                    var noteP = document.createElement('p');
-                    noteP.classList.add("noteProduit");
-                    noteP.textContent = `Note: ${product.note}/5`;
-            
-                    let buttonPanier = document.createElement('button')
-                    buttonPanier.classList.add('boutonAddPanier');
-                    buttonPanier.textContent='Ajouter au panier';
-            
-                    let divProduit = document.createElement('div');
-                    divProduit.classList.add('produitUnitaire')
-                    listeDiv.push(divProduit);
-            
-                    
-                    divProduit.appendChild(imageInfo);
-                    divProduit.appendChild(titleP);
-                    divProduit.appendChild(prixP);
-                    divProduit.appendChild(noteP);
-                    divProduit.appendChild(buttonPanier);
-                    affichageProduit.appendChild(divProduit);
-                    affichageProduit.style.display = 'flex'
-
+                    createHtmlProduct(product);
                     produitValide.add(product.id);
                     majDisplay();
                 }
-                ajoutPanier();
             });
         })
-     
     })
 })
 
@@ -471,6 +394,9 @@ window.addEventListener('resize', function(){
         panier.classList.add('closed');
         panier.classList.remove('opened');
         affichageProduit.style.display = 'flex';
+        if(affichageProduit.style.width = '50%'){
+            affichageProduit.style.width = '100%';
+        }
         filter.style.display = 'block';
         footer.style.marginTop = 0;
     }
@@ -483,80 +409,25 @@ var panierDesktop = document.getElementById('panierDesktop')
 panierDesktop.addEventListener('click', function(){
     panier.classList.remove('closed');
     panier.classList.add('opened');
-    affichageProduit.style.width = '50%';  
+    affichageProduit.style.width = '60%';  
 })
 })
 
 /*Ajout des produits dans le panier */
 var produitAjoute = [];
 var produitAjouteUnique = new Set();
+var totalPriceCart = new Map();
+let totalPrice = 0;
 var zonePanier = document.getElementById('zonePanier');
-document.addEventListener('DOMContentLoaded', ajoutPanier);
-
-
-
 
 
 function addProduct(){
     allProduct.forEach((product) => {
-        let imageInfo = document.createElement('img');
-        imageInfo.src = product.image;
-        imageInfo.alt = product.description;
-
-        var titleP = document.createElement('p');
-        titleP.classList.add('descriptionProduit');
-        titleP.textContent = product.title;
-        
-
-        let prixP = document.createElement('p');
-        prixP.classList.add("prixProduit");
-        prixP.textContent = `${product.price} €`;
-
-        var noteP = document.createElement('p');
-        noteP.classList.add("noteProduit");
-        noteP.textContent = `Note: ${product.note}/5`;
-
-        var buttonPanier = document.createElement('button')
-        buttonPanier.classList.add('boutonAddPanier');
-        buttonPanier.textContent='Ajouter au panier';
-
-        var divProduit = document.createElement('div');
-        divProduit.classList.add('produitUnitaire')
-        listeDiv.push(divProduit);
-
-        
-        divProduit.appendChild(imageInfo);
-        divProduit.appendChild(titleP);
-        divProduit.appendChild(prixP);
-        divProduit.appendChild(noteP);
-        divProduit.appendChild(buttonPanier);
-        affichageProduit.appendChild(divProduit);
-        affichageProduit.style.display = 'flex';
-        majDisplay();
-        
+        createHtmlProduct(product);
+        majDisplay();  
     });
  } 
 
-function ajoutPanier() {/*detect le clic sur le bouton du produit */
-    var divAffiche = document.getElementsByClassName('produitUnitaire');
-    
-    Array.from(divAffiche).forEach(div => {
-        let bouton = div.querySelector('button');
-        if (!bouton.hasEventListener) {
-            bouton.addEventListener('click', function() {
-                let divProduit = this.closest('.produitUnitaire');
-                let id = divProduit.querySelector('.id');
-                produitAjoute.push(id);
-                Array.from(produitAjoute).forEach(produit =>{
-                    produitAjouteUnique.add(produit);
-                });
-                ajoutPanierAffichage();
-            });
-            bouton.hasEventListener = true;   
-        }
-    })
-    
-}
 
 function majDisplay(){/*maj de l'affichage en fonction des filtres choisis */
     var [minP, maxP, minN, maxN ]=detectInput();
@@ -588,14 +459,21 @@ function detectInput(){/*permet de detecter les entrés de l'utilisateur */
 
 function ajoutPanierAffichage(){/*affiche les produits dans le panier */
     zonePanier.innerHTML = '';
-    majQuantitePanier();
     produitAjouteUnique.forEach(produit =>{
         allProduct.forEach(product=>{
-            if(produit.textContent === product.id){  
+            if(produit === product.id){  
                 let imageClose = document.createElement('img');
                 imageClose.classList.add('imgDelete');
                 imageClose.src = '../images/xmark-solid.svg';
                 imageClose.alt = 'croix pour supprimer le produit du panier';
+                imageClose.addEventListener('click', function(){
+                    zonePanier.removeChild(divProduitPanier);
+                    produitAjouteUnique.delete(product.id);
+                    produitAjoute = produitAjoute.filter(produit => produit.textContent !== product.id);
+                    totalPriceCart.delete(product.id);
+                    totalCart();  
+                    majQuantitePanier();
+                })
 
                 let imageP = document.createElement('img')
                 imageP.classList.add('imgProduitPanier');
@@ -609,17 +487,32 @@ function ajoutPanierAffichage(){/*affiche les produits dans le panier */
                 let prixP = document.createElement('p');
                 prixP.classList.add('prixProduitPanier');
                 prixP.textContent = `${product.price} €`;
+                
 
                 let inputNumber = document.createElement('input');
                 inputNumber.type = 'number';
                 inputNumber.name = 'quantitePanier';
-                inputNumber.value = '0';
-              
+                inputNumber.value = produitAjoute.filter(id => id.textContent === product.id).length;
+                let totalPriceProduct = inputNumber.value*product.price;
+                totalPriceCart.set(product.id, totalPriceProduct)
+                inputNumber.addEventListener('input', function(){
+                    totalPriceProduct = inputNumber.value*product.price;
+                    totalPriceCart.set(product.id, totalPriceProduct)
+                    totalCart();
+                    if(inputNumber.value == 0){
+                        zonePanier.removeChild(divProduitPanier);
+                        produitAjouteUnique.delete(product.id);
+                        produitAjoute = produitAjoute.filter(produit => produit.textContent !== product.id);
+                        totalPriceCart.delete(product.id);  
+                        majQuantitePanier();  
+                    }
+                    majQuantitePanier();
+                })
 
                 let divInfo = document.createElement('div');
                 divInfo.classList.add('divInfo');
                 
-                let divProduitPanier = document.createElement('div')
+                let divProduitPanier = document.createElement('div');
                 divProduitPanier.classList.add('divProduitPanier');
 
                 divInfo.appendChild(nomP);
@@ -630,9 +523,7 @@ function ajoutPanierAffichage(){/*affiche les produits dans le panier */
                 divProduitPanier.appendChild(imageP);
                 divProduitPanier.appendChild(divInfo);
 
-                zonePanier.appendChild(divProduitPanier);
-            
-                
+                zonePanier.appendChild(divProduitPanier); 
             }
         })
     }) 
@@ -644,23 +535,93 @@ function majQuantitePanier(){/*maj du compteur d'elements dans le panier */
         panier.innerHTML = '';
         var panierP = document.createElement('p');
         panierP.classList.add('panierP');
-        panierP.textContent = produitAjoute.length;
+        // panierP.textContent = produitAjoute.length;
+        let inputs = document.querySelectorAll('input[name=quantitePanier]');
+        let sum= 0;
+        inputs.forEach(input=>{
+            sum = sum += parseInt(input.value);
+        })
+        panierP.textContent= sum;
 
         panier.appendChild(panierP);
     })
 }
 
+// création et ajout des éléments de l'affichage + boutton d'ajout au panier
+function createHtmlProduct(product){
+    let id = document.createElement('p');
+    id.classList.add('id');
+    id.textContent = product.id;
 
+    let imageInfo = document.createElement('img');
+    imageInfo.src = product.image;
+    imageInfo.alt = product.description;
 
-
-
-
-
-
-
+    var titleP = document.createElement('p');
+    titleP.classList.add('descriptionProduit');
+    titleP.textContent = product.title;
     
 
+    let prixP = document.createElement('p');
+    prixP.classList.add("prixProduit");
+    prixP.textContent = `${product.price} €`;
+
+    var noteP = document.createElement('p');
+    noteP.classList.add("noteProduit");
+    noteP.textContent = `Note: ${product.note}/5`;
+
+    var buttonPanier = document.createElement('button')
+    buttonPanier.classList.add('boutonAddPanier');
+    buttonPanier.textContent='Ajouter au panier';
+    buttonPanier.addEventListener('click', function() {
+        let divProduit = this.closest('.produitUnitaire');
+        let id = divProduit.querySelector('.id');
+        produitAjoute.push(id);
+        Array.from(produitAjoute).forEach(produit =>{
+            produitAjouteUnique.add(produit.textContent);
+        });
+        ajoutPanierAffichage();
+        totalCart();
+        majQuantitePanier();
+    });
+
+    var divProduit = document.createElement('div');
+    divProduit.classList.add('produitUnitaire')
+    listeDiv.push(divProduit);
+
+    divProduit.appendChild(id);
+    divProduit.appendChild(imageInfo);
+    divProduit.appendChild(titleP);
+    divProduit.appendChild(prixP);
+    divProduit.appendChild(noteP);
+    divProduit.appendChild(buttonPanier);
+    affichageProduit.appendChild(divProduit);
+    affichageProduit.style.display = 'flex';
+}
     
+// Bouton vider le panier
+let totalHtml = document.getElementById('totalCart');
+let emptyButton = document.getElementById('emptyCartButton');
+emptyButton.addEventListener('click', function(){ 
+    zonePanier.innerHTML = '';
+    produitAjoute = [];
+    totalHtml.textContent = `Total : 0€`;
+    produitAjouteUnique.clear();
+    totalPrice = 0;
+    totalPriceCart.clear();
+    majQuantitePanier();
+})
+
+// Mise à jour du prix total du panier
+function totalCart(){
+    totalPrice = 0;
+    let totalHtml = document.getElementById('totalCart');
+    for(let price of totalPriceCart.values()){
+        totalPrice += price;
+    }
+    totalHtml.textContent = `Total : ${totalPrice.toFixed(2)}€`;
+}
+
 
 
 
