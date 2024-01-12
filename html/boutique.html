@@ -2,9 +2,11 @@
 <html lang="fr">
     <head>
         <title>Boutique</title>
+        <link rel="stylesheet" href="../css/normalize.css">
         <link rel="stylesheet" href="../css/style.css">
         <script src="../node_modules/jquery/dist/jquery.js"defer></script>
-        <script src="../chocopap.js" defer></script>
+        <script src="../components/displayProduct" defer></script>
+        <script src="../chocopap.js" defer type="module"></script>
     </head>
     <body>
         <!-- HEADER-->
@@ -13,68 +15,75 @@
             <button id="menuBurger"><img src="../images/menuBurger.png" alt="image représentant un menu burger" id="imgMenuBurger"></button>
             <div id="header-right">
                 <ul id="mainNav">
-                    <li><a href="index.html" class="text-style1">Acceuil</a></li>
+                    <li><a href="index.html" class="text-style1">Accueil</a></li>
                     <li><a href="boutique.html" class="text-style1">Boutique</a></li>
-                    <li><a href="#" class="text-style1" class="quantitePanier">2</a></li>
+                    <li id="mainNavPanier" class="text-style1"></li>
                 </ul>
-                <img src="../images/panier.png" alt="panier" class="imgPanier">
+                <img src="../images/panier.png" alt="panier" class="imgPanier" id="panierDesktop" >
             </div>
         </div>
         <div id="headerMobile">
             <ul id="mainNavMobile">
-                <li><a href="index.html" class="text-style1">Acceuil</a></li>
+                <li><a href="index.html" class="text-style1">Accueil</a></li>
                 <li><a href="boutique.html" class="text-style1">Boutique</a></li>
             </ul>
             <div id="panier">
                 <ul id="mainNavMobilePanier">
-                    <li><a href="#" class="text-style1" id="panierMobile">Panier</a></li>
-                    <li><a class="text-style1" class="quantitePanier">2</a></li>
+                    <li><a href="#" class="text-style1" id="panierMobile" >Panier</a></li>
+                    <li id="mainNavPanierMobile" class="text-style1"></li>
                 </ul>
                 <img src="../images/panier.png" alt="panier" class="imgPanier">
             </div>
+            
         </div>
-
-        <div class="content">
-            <!-- FILTRES -->
-            <div id="filter">
-                <div class="text-style3" id="toggleCategories">Cat&eacute;gories</div>
-                <div class="zone-filtre" id="zone-filtre-categories">
-                    <div>
-                        <input type="checkbox" name="ch-all" value="all" checked>
-                        <label for="ch-all" class="text-style4">Tous</label>
+        <section id="affichageBoutique">
+            <h1 class="text-style1" id="titreBoutique">Boutique</h1>
+            <section class="content">
+                <!-- FILTRES -->
+                <div id="filter">
+                    <div class="text-style3" id="toggleCategories" class="menuDeroulantAll">Cat&eacute;gories
+                        <img src="../images/chevron-up-solid.svg" alt="Représente un chevron vers le haut pour fermer le menu"  class="chevronUpC">
+                        <img src="../images/chevron-down-solid.svg" alt="Représente un chevron vers le haut pour ouvrir le menu"  class="chevronDownC">
                     </div>
-                    <div>
-                        <input type="checkbox" name="category" value="blanc">
-                        <label for="ch-chocolat-blanc" class="text-style4">Chocolat blanc</label>
+                    <div class="zone-filtre" id="zone-filtre-categories">
+                        <div>
+                            <input type="checkbox" name="ch-all" value="all" checked>
+                            <label for="ch-all" class="text-style4">Tous</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="category" value="blanc">
+                            <label for="ch-chocolat-blanc" class="text-style4">Chocolat blanc</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="category" value="lait">
+                            <label for="ch-chocolat-lait" class="text-style4">Chocolat au lait</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="category" value="noir">
+                            <label for="ch-chocolat-noir" class="text-style4">Chocolat noir</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="category" value="noix">
+                            <label for="ch-noix" class="text-style4">Noix/Noisette</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="category" value="fruit">
+                            <label for="ch-fruit" class="text-style4">Fruit</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="category" value="caramel">
+                            <label for="ch-caramel" class="text-style4">Caramel</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="category" value="liqueur" >
+                            <label for="ch-liqueur" class="text-style4">Liqueur</label>
+                        </div>
                     </div>
-                    <div>
-                        <input type="checkbox" name="category" value="lait">
-                        <label for="ch-chocolat-lait" class="text-style4">Chocolat au lait</label>
+                    <div class="text-style3" id="togglePrix" class="menuDeroulantAll">Prix
+                        <img src="../images/chevron-up-solid.svg" alt="Représente un chevron vers le haut pour fermer le menu"  class="chevronUpP">
+                        <img src="../images/chevron-down-solid.svg" alt="Représente un chevron vers le haut pour ouvrir le menu"  class="chevronDownP">
                     </div>
-                    <div>
-                        <input type="checkbox" name="category" value="noir">
-                        <label for="ch-chocolat-noir" class="text-style4">Chocolat noir</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="category" value="noix">
-                        <label for="ch-noix" class="text-style4">Noix/Noisette</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="category" value="fruit">
-                        <label for="ch-fruit" class="text-style4">Fruit</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="category" value="caramel">
-                        <label for="ch-caramel" class="text-style4">Caramel</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="category" value="liqueur" >
-                        <label for="ch-liqueur" class="text-style4">Liqueur</label>
-                    </div>
-                </div>
-                <div class="text-style3" id="togglePrix">Prix</div>
-                <div class="zone-filtre" id="zone-filtre-prix">
-                    <div>
+                    <div class="zone-filtre" id="zone-filtre-prix">
                         <div>
                             <span class="text-style4">Prix min</span>
                             <input type="number" name="prix" id="prixMin" oninput="detectInput()">
@@ -82,12 +91,13 @@
                         <div>
                             <span class="text-style4">Prix max</span>
                             <input type="number" name="prix" id="prixMax" oninput="detectInput()">
-                        </div> 
+                        </div>  
                     </div>
-                </div>
-                <div class="text-style3" id="toggleNote">Notes</div>
-                <div class="zone-filtre" id="zone-filtre-note">
-                    <div>
+                    <div class="text-style3" id="toggleNote" class="menuDeroulantAll">Notes
+                        <img src="../images/chevron-up-solid.svg" alt="Représente un chevron vers le haut pour fermer le menu"  class="chevronUpN">
+                        <img src="../images/chevron-down-solid.svg" alt="Représente un chevron vers le haut pour ouvrir le menu"  class="chevronDownN">
+                    </div>
+                    <div class="zone-filtre" id="zone-filtre-note">
                         <div>
                             <label for="noteMin" class="text-style4">Note min</label>
                             <select id="noteMin">
@@ -110,14 +120,23 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- PRODUIT-->
-            <div id="affichageProduit">
-                
-
-                <!-- TODO : Ajouter les produits de façon dynamique-->
-            </div>
-        </div>
+                <!-- PRODUIT-->
+                <div id="affichageProduit"></div>
+            </section>
+        </section>
+            <section id="affichagePanier" class="closed">
+                <img src="../images/rectangle-xmark-regular.svg" alt="Croix de fermeture de la page panier" class="imageCroix">
+                <h2 id="titrePanier">Panier</h2>
+                <div id="zonePanier" class="text-style3"></div>
+                <div id="piedPanier">
+                    <p class="text-style3" id="totalCart"></p>
+                    <button class="boutonPanier" id="emptyCartButton">Réinitialiser le panier</button>
+                    <button class="boutonPanier">Valider le panier</button>
+                    
+                </div>
+            </section>
+        
+        <section id="displayInfoProduct"></section>
         <!-- FOOTER -->
         <div id="footer">
             <div id="informations">

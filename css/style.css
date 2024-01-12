@@ -11,7 +11,12 @@
     --jaune: #FFD543;
 }
 
-
+button{
+    cursor: pointer;
+}
+input{
+    cursor: pointer;
+}
 a {
     text-decoration: none;
 }
@@ -22,6 +27,8 @@ body {
 
 .content {
     background-color: #FFFFFF;
+    padding: 2em;
+    padding-top: 0;
 }
 #logoSite{
     width: 4.5em;
@@ -43,6 +50,7 @@ body {
     display: flex;
     list-style: none;
     gap: 2em;
+    margin-bottom: 0;
 }
 #mainNavMobile{
     list-style: none;
@@ -59,6 +67,7 @@ body {
     display: flex;
     padding-left: 0.5em;
     gap: 1em;
+    margin-bottom: 0;
 }
 
 
@@ -75,17 +84,18 @@ body {
 
 #menuBurger{
     display: block;
-    width: 4em;
-    height: 4em;
+    width: 3em;
+    height: 3em;
     margin-top: 2em;
+    margin-bottom: 2em;
     padding: 0;
     border: none;
 }
 
 #imgMenuBurger{
     margin: 0;
-    width: 4em;
-    height: 4em;
+    width: 3em;
+    height: 3em;
 }
 
 #panier{
@@ -93,11 +103,51 @@ body {
     align-items: center;
     
 }
+.imageCroix{
+    width: 3em;
+    height: 3em;
+    padding: 1em;
+    cursor: pointer;
+}
 
 .imgPanier{
     width: 1.8em;
     height: 1.8em;
-    
+}
+.imgDelete{
+   width: 2em;
+   height: 2em;
+   cursor: pointer;
+}
+.imgProduitPanier{
+    width: 7em;
+    height: 5em;
+}
+.divProduitPanier{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 1em;
+}
+.divInfo{
+    display: flex;
+    flex-direction: column;
+    gap: 0.7em;
+    width: 4em;
+}
+.divInfo input{
+    width: 3em;
+}
+.divInfo p{
+    margin: 0;
+}
+
+.panierP{
+    margin-top: 0.1em;
+    margin-right: 0.2em;
+    background-color: var(--bleu);
+    padding: 0.1em 0.4em 0.1em 0.4em;
+    border-radius: 50%;
 }
 
 #header-logo{
@@ -122,28 +172,203 @@ body {
 }
 
 /*filtres*/
-.content{
+#prixMin, #prixMax{
+    width: 6em;
+}
+#toggleCategories{
+    display: flex;
+}
+
+#filter{
     display: flex;
     flex-direction: column;
-    gap: 2em;
+    gap: 1em;
+    padding-right: 4em;
+}
+#zone-filtre-categories {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+#zone-filtre-prix {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+}
+#zone-filtre-note{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+#titreBoutique{
+    display: flex;
+    justify-content: center;
+    font-size: 4rem;
+    background-color: var(--white);
+    margin: 0;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 
 #affichageProduit div img{
-   width: 20%;
+   width:15em;
+   height: 10em;
 }
+.id{
+    display: none;
+}
+.produitUnitaire{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em;
+    border: 0.1px solid black;
+    border-radius: 2px;
+}
+
 
 #affichageProduit{
     display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 5em;
+    margin-top: 2em;
+}
+
+#affichagePanier{
+    background-color: var(--white);
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    transform: translateY(-100%);
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    padding-top: 0;
+}
+
+#affichagePanier.opened{
+    transform: translateY(0);
+    opacity: 1;
+    display: block;
+}
+#affichagePanier.closed{
+    display: none;
+}
+#zonePanier{
+    background-color: rgb(170, 169, 169);
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    height: 15em;
+    overflow: scroll;
+    border-radius: 4px;
+}
+ 
+ 
+ .descriptionProduit{
+    font-size: 1.8rem;
+ }
+ .descriptionProduit:hover{
+    cursor: pointer;
+    text-decoration: underline;
+ }
+ .prixProduit{
+    font-size: 1.5rem;
+    margin: 0;
+    margin-bottom: 0.5em;
+ }
+ .noteProduit{
+    font-size: 1.5rem;
+    margin: 0;
+    margin-bottom: 0.5em;
+ }
+ .boutonAddPanier{
+    font-size: 1.2rem;
+    width: 50%;
+    height: 3em;
+    border-radius: 4px;
+    border:none;
+ }
+ .boutonAddPanier:hover{
+    background-color: var(--orange);
+ }
+ .boutonAddPanier:active{
+    background-color: var(--white);
+    
+ }
+ #titrePanier{
+    display: flex;
+    justify-content: center;
+    font-size: 2.2rem;
+ }
+
+#piedPanier{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#piedPanier p{
+    font-size: 1.5rem;
+}
+
+.boutonPanier{
+    height: 3em;
+    width: 50%;
+    border-radius: 6px;
+    font-family: 'Droid serif';
+    font-size: 1.3rem;
+    margin-bottom: 1em;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    border: none;
+}
+.boutonPanier:active{
+    background-color: var(--white);
+}
+.boutonPanier:hover{
+    background-color: var(--orange);
+}
+/* page produit */
+#displayInfoProduct{
+    display: none;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+}
+.divDetailP{
+    align-items: start;
+    display: flex;
+    flex-direction: column;
+    padding: 3em;
+}
+.divDetailP input{
+    width: 3em;
+    height: 2em;
+}
+.divDetailP h2{
+    font-size: 2rem;
+}
+.divDetailP img{
+    padding: 0;
+    margin-bottom: 3em;
+}
+.imageDetailP{
+    width: 90%;
+    height: auto;
+}
+.boutonEtImage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3em;
+    margin-bottom: 4em;
+    gap: 4em;
+}
+.boutonEtImage button{
+    width: 100%;
+    padding-top: 0.8em;
     
 }
 
-.produitUnitaire {
-    display: flex;
-    flex-direction: column;
-}
-.boutonAddPanier{
-    width:6em;
-}
 
 #footer{
     display: flex;
@@ -208,10 +433,6 @@ body {
     margin-bottom: 10px;
 }
 
-#filter {
-    padding: 20px;
-}
-
 .table {
     display: table;
     padding: 10px;
@@ -257,8 +478,56 @@ body {
 
 
 /*médias query de la page boutique*/
-@media  only screen and (max-width: 896px){
-    .zone-filtre{
-        display: none;
+@media only screen and (min-width: 897px){
+    .content{
+        display: flex;
+        flex-direction: row;
     }
+    .zone-filtre{
+        display: block;
+    }
+    
+
+    #affichageProduit{
+        display:flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 80%;
+        gap: 5em;
+        justify-content: center;
+    }
+    .imageCroix{
+        width: 3em;
+        height: 3em;
+        padding: 1em;
+     }
+
+    #affichagePanier{
+        position: fixed;
+        top: 5.5em;
+        right: 0;
+        width: 30%;
+        height: 80;
+        box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+        border-radius: 6px;
+    }
+    #affichagePanier.opened{
+        transform: translateY(0);
+        opacity: 1;
+        border: 1px solid black;
+        display: block;
+    }
+    #titrePanier{
+        margin-top: 0;
+    }
+    .boutonPanier{
+        width: 70%;
+        height: 2.5em;
+        border: none;
+    }
+    .boutonAddPanier{
+        width: 80%;
+    }
+
+
 }
