@@ -43,48 +43,47 @@ document.addEventListener('DOMContentLoaded', function(){
             $("#zone-filtre-categories, #zone-filtre-prix, #zone-filtre-note").show();
         }
     });
-
     /*filtre deroulant catégories */
     $(function(){
+        $(".chevronUpC").hide();
+        $(".chevronDownC").show();
         $("#toggleCategories").on("click", function(){
-            $("#zone-filtre-categories").stop(true, true).slideToggle();
-        }) 
+            var zoneFiltreCategories = $("#zone-filtre-categories");
+            zoneFiltreCategories.stop(true, true).slideToggle();
+    
+            $(".chevronUpC").toggle();
+            $(".chevronDownC").toggle();
+        });
     });
+    
 
     /*filtre  deroulant prix*/ 
     $(function(){
+        $(".chevronUpP").hide();
+        $(".chevronDownP").show();
         $("#togglePrix").on("click", function(){
             $("#zone-filtre-prix").stop(true, true).slideToggle();
             var prixSizeMin = document.getElementById('prixMin');
             var prixSizeMax = document.getElementById('prixMax');
             prixSizeMin.style.width = '6em';
             prixSizeMax.style.width = '6em';
+            $(".chevronUpP").toggle();
+            $(".chevronDownP").toggle();
         }) 
     });
 
     /*filtre deroulant note*/ 
     $(function(){
+        $(".chevronUpN").hide();
+        $(".chevronDownN").show();
         $("#toggleNote").on("click", function(){
             $("#zone-filtre-note").stop(true, true).slideToggle();
+            $(".chevronUpN").toggle();
+            $(".chevronDownN").toggle();
         }) 
     });
 });
 
-document.addEventListener('DOMContentLoaded', function(){
-    var menuDeroulantAll = document.querySelectorAll('.menuDeroulantAll');
-    menuDeroulantAll.forEach(menu =>{
-        menu.addEventListener('click', function(){
-            var chevron = menu.querySelector('img');
-            if(chevron.classList.contains('hidden')){
-                chevron.classList.remove('hidden');
-                chevron.classList.add('visible')
-            } else {
-                chevron.classList.remove('visible')
-                chevron.classList.add('hidden');
-            }
-        })
-    })
-})
 
 /*Importation du fichier products.json */
 
@@ -367,50 +366,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 /*Gestion de l'ouverture et fermeture du panier mobile*/
 document.addEventListener('DOMContentLoaded', function(){
-var panier = document.getElementById('affichagePanier');
-var panierMobile = document.getElementById('panierMobile')
-
-panierMobile.addEventListener('click', function(){
-    panier.classList.remove('closed');
-    panier.classList.add('opened');
-    headerMobile.style.display = 'none';
-    affichageProduit.style.display = 'none';
-    filter.style.display = 'none';
-})
-var imageCroix = document.getElementById('imageCroix');
-imageCroix.addEventListener('click', function(){
-    if(affichageProduit.style.width = '50%'){
-        affichageProduit.style.width = '100%';
-    }
-    panier.classList.add('closed');
-    panier.classList.remove('opened');
-    affichageProduit.style.display = 'flex';
-    filter.style.display = 'block';
-    footer.style.marginTop = 0;
-})
-window.addEventListener('resize', function(){
-    let largeur = window.innerWidth;
-    if(largeur){
-        panier.classList.add('closed');
-        panier.classList.remove('opened');
-        affichageProduit.style.display = 'flex';
-        if(affichageProduit.style.width = '50%'){
-            affichageProduit.style.width = '100%';
-        }
-        filter.style.display = 'block';
-        footer.style.marginTop = 0;
-    }
-})
-
-/*Gestion de l'ouverture et fermeture du panier desktop */
-var panier = document.getElementById('affichagePanier');
-var panierDesktop = document.getElementById('panierDesktop')
-
-panierDesktop.addEventListener('click', function(){
-    panier.classList.remove('closed');
-    panier.classList.add('opened');
-    affichageProduit.style.width = '60%';  
-})
+    openCloseCart();
 })
 
 /*Ajout des produits dans le panier */
@@ -495,10 +451,12 @@ function ajoutPanierAffichage(){/*affiche les produits dans le panier */
                 inputNumber.value = produitAjoute.filter(id => id.textContent === product.id).length;
                 let totalPriceProduct = inputNumber.value*product.price;
                 totalPriceCart.set(product.id, totalPriceProduct)
+                 emptyCart();
                 inputNumber.addEventListener('input', function(){
                     totalPriceProduct = inputNumber.value*product.price;
                     totalPriceCart.set(product.id, totalPriceProduct)
                     totalCart();
+                   
                     if(inputNumber.value == 0){
                         zonePanier.removeChild(divProduitPanier);
                         produitAjouteUnique.delete(product.id);
@@ -507,6 +465,7 @@ function ajoutPanierAffichage(){/*affiche les produits dans le panier */
                         majQuantitePanier();  
                     }
                     majQuantitePanier();
+                    
                 })
 
                 let divInfo = document.createElement('div');
@@ -535,7 +494,6 @@ function majQuantitePanier(){/*maj du compteur d'elements dans le panier */
         panier.innerHTML = '';
         var panierP = document.createElement('p');
         panierP.classList.add('panierP');
-        // panierP.textContent = produitAjoute.length;
         let inputs = document.querySelectorAll('input[name=quantitePanier]');
         let sum= 0;
         inputs.forEach(input=>{
@@ -560,7 +518,9 @@ function createHtmlProduct(product){
     var titleP = document.createElement('p');
     titleP.classList.add('descriptionProduit');
     titleP.textContent = product.title;
-    
+    titleP.addEventListener('click', function(){
+        createHtmlDetail(product);
+    });
 
     let prixP = document.createElement('p');
     prixP.classList.add("prixProduit");
@@ -600,17 +560,20 @@ function createHtmlProduct(product){
 }
     
 // Bouton vider le panier
-let totalHtml = document.getElementById('totalCart');
-let emptyButton = document.getElementById('emptyCartButton');
-emptyButton.addEventListener('click', function(){ 
-    zonePanier.innerHTML = '';
-    produitAjoute = [];
-    totalHtml.textContent = `Total : 0€`;
-    produitAjouteUnique.clear();
-    totalPrice = 0;
-    totalPriceCart.clear();
-    majQuantitePanier();
-})
+function emptyCart(){
+    let totalHtml = document.getElementById('totalCart');
+    let emptyButton = document.getElementById('emptyCartButton');
+    emptyButton.addEventListener('click', function(){ 
+        zonePanier.innerHTML = '';
+        produitAjoute = [];
+        totalHtml.textContent = `Total : 0€`;
+        produitAjouteUnique.clear();
+        totalPrice = 0;
+        totalPriceCart.clear();
+        majQuantitePanier();
+    })
+}
+
 
 // Mise à jour du prix total du panier
 function totalCart(){
@@ -623,9 +586,160 @@ function totalCart(){
 }
 
 
+function createHtmlDetail(product){
+    let affichageBoutique = document.getElementById('affichageBoutique');
+        let displayInfoProduct = document.getElementById('displayInfoProduct');
+        displayInfoProduct.innerHTML = '';
+        affichageBoutique.style.display = 'none';
+        displayInfoProduct.style.display = 'flex';
+        let id = document.createElement('p');
+        id.classList.add('id');
+        id.textContent = product.id;
+
+        let imageClose = document.createElement('img');
+        imageClose.classList.add('imageCroix');
+        imageClose.src= '../images/rectangle-xmark-regular.svg';
+        imageClose.alt = 'cliquer ici pour fermer la page detail produit';
+        imageClose.addEventListener('click', function(){
+            displayInfoProduct.style.display = 'none';
+            affichageBoutique.style.display = 'block';
+        })
+
+        let titleP = document.createElement('h2');
+        titleP.classList.add('text-style1');
+        titleP.textContent = product.title;
+
+        let priceP = document.createElement('p');
+        priceP.classList.add('prixProduit', 'text-style3');
+        priceP.textContent = `${product.price} €`;
+
+
+        let descriptionP = document.createElement('p');
+        descriptionP.classList.add('text-style3');
+        descriptionP.textContent = product.description;
+
+        let inputNumber = document.createElement('input');
+        inputNumber.type = 'number';
+        
+        inputNumber.value = '1';
+        let inputActuel = '0';
+        inputNumber.addEventListener('input', function(){
+             inputActuel = inputNumber.value; 
+        })
+        
+        let buttonP = document.createElement('button');
+        buttonP.classList.add('boutonAddPanier', 'text-style3');
+        buttonP.textContent='Ajouter au panier';
+        buttonP.addEventListener('click', function() {
+            let i='0';
+            if(!inputActuel==0){
+                do{
+                    let id = divDetailP.querySelector('.id');
+                    produitAjoute.push(id);
+                    
+                    Array.from(produitAjoute).forEach(produit =>{
+                        produitAjouteUnique.add(produit.textContent);
+                    });
+                    
+                    ajoutPanierAffichage();
+                    totalCart();
+                    i++;
+                    console.log(i);
+                }while(i<inputActuel);
+                inputActuel ='0';
+            }
+        inputNumber.value = '1'; 
+        majQuantitePanier();
+        })
+
+        let imageP = document.createElement('img');
+        imageP.classList.add('imageDetailP')
+        imageP.src = product.image;
+        imageP.alt = product.description;
+
+        let ingredientP = document.createElement('h2');
+        ingredientP.classList.add('text-style1');
+        ingredientP.textContent = 'Ingredients : ';
+
+        let listeIngredients = document.createElement('p');
+        listeIngredients.classList.add('text-style3');
+        listeIngredients.textContent = product.ingredients;
+
+        let boutonEtImage = document.createElement('div')
+        boutonEtImage.classList.add('boutonEtImage');
+
+        let divDetailP = document.createElement('div');
+        divDetailP.classList.add('divDetailP');
+
+        boutonEtImage.appendChild(buttonP);
+        boutonEtImage.appendChild(imageP);
 
 
 
+        divDetailP.appendChild(id);
+        divDetailP.appendChild(imageClose);
+        divDetailP.appendChild(titleP);
+        divDetailP.appendChild(priceP);
+        divDetailP.appendChild(descriptionP);
+        divDetailP.appendChild(inputNumber);
+        divDetailP.appendChild(boutonEtImage);
+        divDetailP.appendChild(ingredientP);
+        divDetailP.appendChild(listeIngredients );
 
+        displayInfoProduct.appendChild(divDetailP);
+
+}
+
+function openCloseCart(){
+    var panier = document.getElementById('affichagePanier');
+    var panierMobile = document.getElementById('panierMobile');
+    let titreH1 = document.getElementById('titreBoutique');
+
+    panierMobile.addEventListener('click', function(){
+        panier.classList.remove('closed');
+        panier.classList.add('opened');
+        titreH1.style.display = 'none';
+        headerMobile.style.display = 'none';
+        affichageProduit.style.display = 'none';
+        filter.style.display = 'none';
+    })
+    var imageCroix = document.querySelector('.imageCroix');
+    imageCroix.addEventListener('click', function(){
+        if(affichageProduit.style.width = '50%'){
+            affichageProduit.style.width = '100%';
+        }
+        panier.classList.add('closed');
+        panier.classList.remove('opened');
+        titreH1.style.display = 'flex';
+        affichageProduit.style.display = 'flex';
+        filter.style.display = 'block';
+        footer.style.marginTop = 0;
+    })
+    window.addEventListener('resize', function(){
+        let largeur = window.innerWidth;
+        if(largeur){
+            panier.classList.add('closed');
+            panier.classList.remove('opened');
+            affichageProduit.style.display = 'flex';
+            if(affichageProduit.style.width = '50%'){
+                affichageProduit.style.width = '100%';
+            }
+            filter.style.display = 'block';
+            footer.style.marginTop = 0;
+        }
+    })
+
+    /*Gestion de l'ouverture et fermeture du panier desktop */
+    var panier = document.getElementById('affichagePanier');
+    var panierDesktop = document.getElementById('panierDesktop')
+
+    panierDesktop.addEventListener('click', function(){
+        panier.classList.remove('closed');
+        panier.classList.add('opened');
+        affichageProduit.style.width = '60%'; 
+        titreH1.style.display = 'flex'; 
+    })
+
+}
 
   

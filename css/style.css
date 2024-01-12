@@ -84,17 +84,18 @@ body {
 
 #menuBurger{
     display: block;
-    width: 4em;
-    height: 4em;
+    width: 3em;
+    height: 3em;
     margin-top: 2em;
+    margin-bottom: 2em;
     padding: 0;
     border: none;
 }
 
 #imgMenuBurger{
     margin: 0;
-    width: 4em;
-    height: 4em;
+    width: 3em;
+    height: 3em;
 }
 
 #panier{
@@ -102,10 +103,11 @@ body {
     align-items: center;
     
 }
-#imageCroix{
+.imageCroix{
     width: 3em;
     height: 3em;
     padding: 1em;
+    cursor: pointer;
 }
 
 .imgPanier{
@@ -176,12 +178,7 @@ body {
 #toggleCategories{
     display: flex;
 }
-.hidden{
-    transform: rotate(180deg);
-}
-.visible{
-    transform: rotate(0deg);
-}
+
 #filter{
     display: flex;
     flex-direction: column;
@@ -253,7 +250,6 @@ body {
 #affichagePanier.opened{
     transform: translateY(0);
     opacity: 1;
-    border: 1px solid black;
     display: block;
 }
 #affichagePanier.closed{
@@ -271,6 +267,10 @@ body {
  
  .descriptionProduit{
     font-size: 1.8rem;
+ }
+ .descriptionProduit:hover{
+    cursor: pointer;
+    text-decoration: underline;
  }
  .prixProduit{
     font-size: 1.5rem;
@@ -326,6 +326,47 @@ body {
 }
 .boutonPanier:hover{
     background-color: var(--orange);
+}
+/* page produit */
+#displayInfoProduct{
+    display: none;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+}
+.divDetailP{
+    align-items: start;
+    display: flex;
+    flex-direction: column;
+    padding: 3em;
+}
+.divDetailP input{
+    width: 3em;
+    height: 2em;
+}
+.divDetailP h2{
+    font-size: 2rem;
+}
+.divDetailP img{
+    padding: 0;
+    margin-bottom: 3em;
+}
+.imageDetailP{
+    width: 90%;
+    height: auto;
+}
+.boutonEtImage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3em;
+    margin-bottom: 4em;
+    gap: 4em;
+}
+.boutonEtImage button{
+    width: 100%;
+    padding-top: 0.8em;
+    
 }
 
 
@@ -455,7 +496,7 @@ body {
         gap: 5em;
         justify-content: center;
     }
-    #imageCroix{
+    .imageCroix{
         width: 3em;
         height: 3em;
         padding: 1em;
@@ -469,6 +510,12 @@ body {
         height: 80;
         box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
         border-radius: 6px;
+    }
+    #affichagePanier.opened{
+        transform: translateY(0);
+        opacity: 1;
+        border: 1px solid black;
+        display: block;
     }
     #titrePanier{
         margin-top: 0;
