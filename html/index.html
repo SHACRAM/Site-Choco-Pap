@@ -8,7 +8,9 @@
         <link rel="stylesheet" href="../node_modules/slick/slick-theme.css">
         <script src="../node_modules/jquery/dist/jquery.js"></script>
         <script src="../node_modules/slick/slick.min.js" ></script>
-        <script src="../chocopap.js"></script>
+        <script src="../chocopap.js" defer></script>
+        <script src="../index.js" defer></script>
+        
     </head>
     <body>
         <!-- HEADER-->
@@ -17,48 +19,61 @@
                 <button id="menuBurger"><img src="../images/menuBurger.png" alt="image représentant un menu burger" id="imgMenuBurger"></button>
             <div id="header-right">
                 <ul id="mainNav">
-                    <li><a href="index.html" class="text-style1">Acceuil</a></li>
-                    <li><a href="boutique.html" class="text-style1">Boutique</a></li>
-                    <li><a href="#" class="text-style1" class="quantitePanier">2</a></li>
+                    <li class="underline"><a href="index.html" class="text-style1">Acceuil</a></li>
+                    <li class="underline"><a href="boutique.html" class="text-style1">Boutique</a></li>
+                    <li id="mainNavPanier" class="text-style1"></li>
                 </ul>
-                <img src="../images/panier.png" alt="panier" class="imgPanier">
+                <img src="../images/panier.svg" alt="panier" class="imgPanier" id="panierDesktop" >
             </div>
         </div>
         <div id="headerMobile">
             <ul id="mainNavMobile">
-                <li><a href="index.html" class="text-style1">Acceuil</a></li>
-                <li><a href="boutique.html" class="text-style1">Boutique</a></li>
+                <li class="underline"><a href="index.html" class="text-style1" >Acceuil</a></li>
+                <li class="underline"><a href="boutique.html" class="text-style1">Boutique</a></li>
             </ul>
             <div id="panier">
                 <ul id="mainNavMobilePanier">
-                    <li><a href="#" class="text-style1" id="panierMobile">Panier</a></li>
-                    <li><a class="text-style1" class="quantitePanier">2</a></li>
+                    <li class="underline"><a href="#" class="text-style1" id="panierMobile">Panier</a></li>
+                    <li id="mainNavPanierMobile" class="text-style1"></li>
                 </ul>
-                <img src="../images/panier.png" alt="panier" class="imgPanier">
+                <img src="../images/panier.svg" alt="panier" class="imgPanier">
             </div>
         </div>
         <!-- CAROUSSEL -->
-        <div class="carrousel">
-            <div><img src="../images/accueil1.jpg" alt="plusieurs pâtisserie au chocolat" loading="lazy"></div>
-            <div><img src="../images/accueil2.jpg" alt="Photos montrant plusieurs bonbons différents" loading="lazy"></div>
-            <div><img src="../images/accueil3.jpg" alt="Photos montrant plusieurs bonbons au chocolat" loading="lazy"></div>
-        </div>
-        <button id="boutonBoutique" class="text-style2"><a href="./boutique.html">VOIR LA BOUTIQUE</a></button> 
+        <section>
+            <div class="carrousel">
+                <div><img src="../images/accueil1.jpg" alt="plusieurs pâtisserie au chocolat" loading="lazy"></div>
+                <div><img src="../images/accueil2.jpg" alt="Photos montrant plusieurs bonbons différents" loading="lazy"></div>
+                <div><img src="../images/accueil3.jpg" alt="Photos montrant plusieurs bonbons au chocolat" loading="lazy"></div>
+            </div>
+            <button id="boutonBoutique" class="text-style2"><a href="./boutique.html">VOIR LA BOUTIQUE</a></button> 
+        </section>
+        <section id="affichagePanier" class="closed">
+            <img src="../images/rectangle-xmark-regular.svg" alt="Croix de fermeture de la page panier" class="imageCroix">
+            <h2 id="titrePanier">Panier</h2>
+            <div id="zonePanier" class="text-style3"></div>
+            <div id="piedPanier">
+                <p class="text-style3" id="totalCart"></p>
+                <button class="boutonPanier" id="emptyCartButton">Réinitialiser le panier</button>
+                <button class="boutonPanier">Valider le panier</button>
+                
+            </div>
+        </section>
         <!-- FOOTER -->
         <div id="footer">
             <div id="informations">
-                <div class="text-style3">Choco pap</div>
-                <div class="text-style4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</div>
+                <div class="text-style5">Choco pap</div>
+                <div class="text-style6">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</div>
             </div>
             <div id="contact">
-                <div class="text-style3">Contact</div>
-                <div class="text-style4">Adresse : 51 rue du chocolat 75000 Paris Téléphone: 01 23 45 67 89
+                <div class="text-style5">Contact</div>
+                <div class="text-style6">Adresse : 51 rue du chocolat 75000 Paris Téléphone: 01 23 45 67 89
                     Horaires: 9h00-17h00 du Lundi au vendredi</div>
             </div>
             <div id="social-network">
-                <div><a href="https://www.facebook.com/"><img src="../images/iconeFacebook.png" alt="facebook" class="logoReseaux"></a></div>
-                <div><a href="https://www.instagram.com/"><img src="../images/iconeInstagram.png" alt="instagram" class="logoReseaux"></a></div>
-                <div><a href="https://twitter.com/"><img src="../images/iconetwitter.png" alt="twitter" class="logoReseaux"></a></div>
+                <div><a href="https://www.facebook.com/"><img src="../images/iconeFacebook.svg" alt="facebook" class="logoReseaux"></a></div>
+                <div><a href="https://www.instagram.com/"><img src="../images/iconeInstagram.svg" alt="instagram" class="logoReseaux"></a></div>
+                <div><a href="https://twitter.com/"><img src="../images/iconetwitter.svg" alt="twitter" class="logoReseaux"></a></div>
             </div>
         </div>
     </body>

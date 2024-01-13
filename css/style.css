@@ -17,23 +17,24 @@ button{
 input{
     cursor: pointer;
 }
-a {
+a{
     text-decoration: none;
 }
 
 body {
-    background-color: #B65F28;
+    background-color: var(--marron);
 }
 
 .content {
     background-color: #FFFFFF;
     padding: 2em;
     padding-top: 0;
+    margin-bottom: 1em;
 }
 #logoSite{
     width: 4.5em;
     Height: 4.5em;
-    margin: 1em 0em 0em 1em;
+    margin: 1em 0em 1em 2em;
 }
 
 #header{
@@ -51,7 +52,13 @@ body {
     list-style: none;
     gap: 2em;
     margin-bottom: 0;
+    margin-top: 0;
 }
+#mainNav li{
+    display: flex;
+    align-items: center;
+}
+
 #mainNavMobile{
     list-style: none;
     display: flex;
@@ -67,7 +74,13 @@ body {
     display: flex;
     padding-left: 0.5em;
     gap: 1em;
-    margin-bottom: 0;
+    margin-bottom: 1em;
+    margin-top: 0;
+}
+
+#mainNavMobilePanier li{
+    display: flex;
+    align-items: center;
 }
 
 
@@ -78,9 +91,11 @@ body {
 
 #panierMobile{
     text-decoration: underline 2px black;
-
 }
 
+#mainNavMobile li{
+    width: fit-content;
+}
 
 #menuBurger{
     display: block;
@@ -113,10 +128,11 @@ body {
 .imgPanier{
     width: 1.8em;
     height: 1.8em;
+    cursor: pointer;
 }
 .imgDelete{
-   width: 2em;
-   height: 2em;
+   width: 1em;
+   height: 1em;
    cursor: pointer;
 }
 .imgProduitPanier{
@@ -158,17 +174,18 @@ body {
 .carrousel div{
     height: 35em;
     position: relative;
-    margin-top: 1em;
     margin-bottom: 1em;
-    
 }
 
 #boutonBoutique{
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.9);
+}
+#boutonBoutique:hover{
+    background-color: var(--orange);
 }
 
 /*filtres*/
@@ -208,6 +225,7 @@ body {
     margin: 0;
     padding-top: 1em;
     padding-bottom: 1em;
+    font-family: 'Fjalla one';
 }
 
 #affichageProduit div img{
@@ -259,7 +277,7 @@ body {
     background-color: rgb(170, 169, 169);
     margin-left: 0.5em;
     margin-right: 0.5em;
-    height: 15em;
+    height: 13em;
     overflow: scroll;
     border-radius: 4px;
 }
@@ -338,37 +356,47 @@ body {
     align-items: start;
     display: flex;
     flex-direction: column;
-    padding: 3em;
-}
-.divDetailP input{
-    width: 3em;
-    height: 2em;
-}
-.divDetailP h2{
-    font-size: 2rem;
-}
-.divDetailP img{
-    padding: 0;
-    margin-bottom: 3em;
-}
-.imageDetailP{
-    width: 90%;
-    height: auto;
-}
-.boutonEtImage{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 3em;
-    margin-bottom: 4em;
-    gap: 4em;
-}
-.boutonEtImage button{
-    width: 100%;
-    padding-top: 0.8em;
-    
 }
 
+.titlePriceDescription{
+    margin-left: 2em;
+}
+.imgDiv{
+    display: flex;
+    justify-content: center;
+    margin-top: 3em;
+}
+.imageDetailP{
+    width: 20em;
+}
+.buttonDiv{
+    display: flex;
+    justify-content: center;
+}
+.buttonDiv button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.5em;
+    padding-top: 0.8em;
+    font-size: 1.2rem;
+}
+.inputDiv input{
+    display: flex;
+    justify-content: flex-start;
+    width: 3em;
+    margin-left: 2em;
+}
+
+.inputButton{
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+}
+.ingredientListe{
+    padding-left: 2em;
+    margin-top: 4em;
+}
 
 #footer{
     display: flex;
@@ -376,19 +404,24 @@ body {
     margin-right: 8em;
     padding: 0;
 }
+
 .logoReseaux{
     width: 3em;
     height: 3em;
     border-radius: 6px;
     margin-top: 1em;
+}
+.logoReseaux:hover{
+    background-color: rgba(255, 255, 255, 0.3);;
 
 }
 #social-network{
     display: flex;
     gap: 1.3em;
     margin-left: 0.5em;
-    
+    margin-bottom: 1em; 
 }
+
 
 #informations, #contact {
     margin-left: 0.5em;
@@ -399,9 +432,6 @@ body {
 .text-style1 {
     font-size: 20px;
     font-family: 'Fjalla One';
-    
-}
-.text-style1 a {
     color: #FFFFFF;
 }
 
@@ -418,9 +448,29 @@ body {
     color: #2C1E1E;
 }
 
-.text-style3 {
+.text-style5{
+    color: var(--white);
+    font-family: 'Droid Serif';
     font-size: 1.5rem;
     padding-bottom: 1em;
+    font-weight: bold;
+}
+
+.text-style6{
+    color: var(--white);
+    font-family: 'Droid Serif';
+    font-size: 1rem;
+    padding-bottom: 1em;
+    font-weight: bold;
+}
+.text-style7 {
+    font-size: 2rem;
+    font-family: 'Fjalla One';
+    color: #2C1E1E;
+}
+
+.text-style3 {
+    font-size: 1.5rem;
     font-weight: bold;
 }
 .text-style3, .text-style4 {
@@ -436,6 +486,13 @@ body {
 .table {
     display: table;
     padding: 10px;
+}
+.underline{
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s ease;
+}
+.underline:hover{
+    border-color: var(--orange);
 }
 
 
@@ -468,10 +525,16 @@ body {
     }
     #informations, #contact, #social-network{
         margin-left: 0;
+        margin-bottom: 1em;
     }
 
     .logoReseaux{
         margin-top: 0;
+    }
+    .carrousel div{
+        height: 35bouem;
+        position: relative;
+        margin-bottom: 1em;
     }
     
 }
@@ -496,6 +559,7 @@ body {
         gap: 5em;
         justify-content: center;
     }
+    
     .imageCroix{
         width: 3em;
         height: 3em;
@@ -504,10 +568,10 @@ body {
 
     #affichagePanier{
         position: fixed;
-        top: 5.5em;
+        top: 6.5em;
         right: 0;
         width: 30%;
-        height: 80;
+        height: 100%;
         box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
         border-radius: 6px;
     }
@@ -529,5 +593,63 @@ body {
         width: 80%;
     }
 
+    /* page detail du produit desktop */
+    
+    .titlePriceDescriptionInputButton{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .buttonDiv button{
+        width: 15em;
+    }
+    .inputDiv input{
+        display: flex;
+        margin-top: 0.5em;
+    }
+        
+    .inputButton{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .titlePriceDescriptionInputButtonImg{
+        display: flex;
+        flex-direction: row-reverse;
+        width:100%;
+        gap: 3em;
+    }
+    .ingredientListe{
+        width: 100%
+      
+    }
+    .divTotal{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .imgDiv{
+        height: 15em;
+        padding-top: 1em;
+    }
+}
+@media only screen and (min-width: 1200px){
+
+    .ingredientListe{
+        width: 100%
+      
+    }
+
+    .ingredientListe{
+        width: 70%
+    }
+
+    .titlePriceDescriptionInputButtonImg{
+        display: flex;
+        flex-direction: row-reverse;
+        width:70%;
+        gap: 3em;
+    }
 
 }
