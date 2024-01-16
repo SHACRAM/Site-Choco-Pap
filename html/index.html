@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <title>Boutique</title>
+    <link rel="stylesheet" href="../css/normalize.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../node_modules/slick/slick.css" />
+    <link rel="stylesheet" href="../node_modules/slick/slick-theme.css" />
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/slick/slick.min.js"></script>
+    <script src="../chocopap.js" defer></script>
+  </head>
+  <body>
+    <!-- HEADER-->
+    <div id="header">
+      <img src="../images/logo.png" alt="logo" id="logoSite" />
+      <button id="menuBurger">
+        <img
+          src="../images/menuBurger.png"
+          alt="image représentant un menu burger"
+          id="imgMenuBurger"
+        />
+      </button>
+      <div id="header-right">
+        <ul id="mainNav">
+          <li class="underline">
+            <p class="text-style1" id="lienVersAccueil">Accueil</p>
+          </li>
+          <li class="underline">
+            <p class="text-style1" id="lienVersBoutique">Boutique</p>
+          </li>
+          <li id="mainNavPanier" class="text-style1"></li>
+        </ul>
+        <img
+          src="../images/panier.svg"
+          alt="panier"
+          class="imgPanier"
+          id="panierDesktop"
+        />
+      </div>
+    </div>
+    <div id="headerMobile">
+      <ul id="mainNavMobile">
+        <li class="underline">
+          <p class="text-style1" id="lienVersAccueilMobile">Accueil</p>
+        </li>
+        <li class="underline">
+          <p class="text-style1" id="lienVersBoutiqueMobile">Boutique</p>
+        </li>
+      </ul>
+      <div id="panier">
+        <ul id="mainNavMobilePanier">
+          <li class="underline">
+            <p class="text-style1" id="panierMobile">Panier</p>
+          </li>
+          <li id="mainNavPanierMobile" class="text-style1"></li>
+        </ul>
+        <img src="../images/panier.svg" alt="panier" class="imgPanier" />
+      </div>
+    </div>
+    <!-- CAROUSSEL -->
+    <section id="displayIndex">
+      <div class="carrousel">
+        <div>
+          <img
+            src="../images/accueil1.jpg"
+            alt="plusieurs pâtisserie au chocolat"
+            loading="lazy"
+          />
+        </div>
+        <div>
+          <img
+            src="../images/accueil2.jpg"
+            alt="Photos montrant plusieurs bonbons différents"
+            loading="lazy"
+          />
+        </div>
+        <div>
+          <img
+            src="../images/accueil3.jpg"
+            alt="Photos montrant plusieurs bonbons au chocolat"
+            loading="lazy"
+          />
+        </div>
+      </div>
+      <h1 class="text-style1" id="titreSite">Choco-Pap</h1>
+      <p id="lienBoutique" class="text-style3">VOIR LA BOUTIQUE</p>
+    </section>
+    <section id="affichageBoutique">
+      <h2 id="titreBoutique">Boutique</h2>
+      <section class="content">
+        <!-- FILTRES -->
+        <div id="filter">
+          <div class="text-style3 menuDeroulantAll" id="toggleCategories">
+            Cat&eacute;gories
+            <img
+              src="../images/chevron-up-solid.svg"
+              alt="Représente un chevron vers le haut pour fermer le menu"
+              class="chevronUpC"
+            />
+            <img
+              src="../images/chevron-down-solid.svg"
+              alt="Représente un chevron vers le haut pour ouvrir le menu"
+              class="chevronDownC"
+            />
+          </div>
+          <div class="zone-filtre" id="zone-filtre-categories">
+            <div>
+              <input
+                type="checkbox"
+                name="ch-all"
+                value="all"
+                id="ch-all"
+                checked
+              />
+              <label for="ch-all" class="text-style4">Tous</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                name="category"
+                value="blanc"
+                id="ch-chocolat-blanc"
+              />
+              <label for="ch-chocolat-blanc" class="text-style4"
+                >Chocolat blanc</label
+              >
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                name="category"
+                value="lait"
+                id="ch-chocolat-lait"
+              />
+              <label for="ch-chocolat-lait" class="text-style4"
+                >Chocolat au lait</label
+              >
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                name="category"
+                value="noir"
+                id="ch-chocolat-noir"
+              />
+              <label for="ch-chocolat-noir" class="text-style4"
+                >Chocolat noir</label
+              >
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                name="category"
+                value="noix"
+                id="ch-noix"
+              />
+              <label for="ch-noix" class="text-style4">Noix/Noisette</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                name="category"
+                value="fruit"
+                id="ch-fruit"
+              />
+              <label for="ch-fruit" class="text-style4">Fruit</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                name="category"
+                value="caramel"
+                id="ch-caramel"
+              />
+              <label for="ch-caramel" class="text-style4">Caramel</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                name="category"
+                value="liqueur"
+                id="ch-liqueur"
+              />
+              <label for="ch-liqueur" class="text-style4">Liqueur</label>
+            </div>
+          </div>
+          <div class="text-style3 menuDeroulantAll" id="togglePrix">
+            Prix
+            <img
+              src="../images/chevron-up-solid.svg"
+              alt="Représente un chevron vers le haut pour fermer le menu"
+              class="chevronUpP"
+            />
+            <img
+              src="../images/chevron-down-solid.svg"
+              alt="Représente un chevron vers le haut pour ouvrir le menu"
+              class="chevronDownP"
+            />
+          </div>
+          <div class="zone-filtre" id="zone-filtre-prix">
+            <div>
+              <span class="text-style4">Prix min</span>
+              <input
+                type="number"
+                name="prix"
+                id="prixMin"
+                oninput="detectInput()"
+              />
+            </div>
+            <div>
+              <span class="text-style4">Prix max</span>
+              <input
+                type="number"
+                name="prix"
+                id="prixMax"
+                oninput="detectInput()"
+              />
+            </div>
+          </div>
+          <div class="text-style3 menuDeroulantAll" id="toggleNote">
+            Notes
+            <img
+              src="../images/chevron-up-solid.svg"
+              alt="Représente un chevron vers le haut pour fermer le menu"
+              class="chevronUpN"
+            />
+            <img
+              src="../images/chevron-down-solid.svg"
+              alt="Représente un chevron vers le haut pour ouvrir le menu"
+              class="chevronDownN"
+            />
+          </div>
+          <div class="zone-filtre" id="zone-filtre-note">
+            <div>
+              <label for="noteMin" class="text-style4">Note min</label>
+              <select id="noteMin">
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+            <div>
+              <label for="noteMax" class="text-style4">Note max</label>
+              <select id="noteMax">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5" selected>5</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <!-- PRODUIT-->
+        <div id="affichageProduit"></div>
+      </section>
+    </section>
+    <section id="affichagePanier" class="closed">
+      <img
+        src="../images/rectangle-xmark-regular.svg"
+        alt="Croix de fermeture de la page panier"
+        class="imageCroix"
+      />
+      <h2 id="titrePanier">Panier</h2>
+      <div id="zonePanier" class="text-style3"></div>
+      <div id="piedPanier">
+        <p class="text-style3" id="totalCart"></p>
+        <button class="boutonPanier" id="emptyCartButton">
+          Réinitialiser le panier
+        </button>
+        <button class="boutonPanier">Valider le panier</button>
+      </div>
+    </section>
+
+    <section id="displayInfoProduct"></section>
+    <!-- FOOTER -->
+    <div id="footer">
+      <div id="informations">
+        <div class="text-style5">Choco pap</div>
+        <div class="text-style6">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua
+        </div>
+      </div>
+      <div id="contact">
+        <div class="text-style5">Contact</div>
+        <div class="text-style6">
+          Adresse : 51 rue du chocolat 75000 Paris Téléphone: 01 23 45 67 89
+          Horaires: 9h00-17h00 du Lundi au vendredi
+        </div>
+      </div>
+      <div id="social-network">
+        <div>
+          <a href="https://www.facebook.com/"
+            ><img
+              src="../images/iconeFacebook.svg"
+              alt="facebook"
+              class="logoReseaux"
+          /></a>
+        </div>
+        <div>
+          <a href="https://www.instagram.com/"
+            ><img
+              src="../images/iconeInstagram.svg"
+              alt="instagram"
+              class="logoReseaux"
+          /></a>
+        </div>
+        <div>
+          <a href="https://twitter.com/"
+            ><img
+              src="../images/iconetwitter.svg"
+              alt="twitter"
+              class="logoReseaux"
+          /></a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
