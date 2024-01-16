@@ -193,7 +193,7 @@ body {
 #titreSite {
   margin: 0;
   position: absolute;
-  top: 5%;
+  top: 7%;
   left: 50%;
   font-size: 3.5rem;
   color: var(--orange);
@@ -543,7 +543,7 @@ body {
   #titreSite {
     margin: 0;
     position: absolute;
-    top: 5%;
+    top: 7%;
     left: 50%;
     font-size: 5rem;
     color: var(--orange);
@@ -590,7 +590,7 @@ body {
   #titreSite {
     margin: 0;
     position: absolute;
-    top: 5.5%;
+    top: 6%;
     left: 50%;
     font-size: 5.3rem;
     color: var(--orange);

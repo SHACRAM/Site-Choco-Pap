@@ -662,6 +662,7 @@ lienVersAccueil.addEventListener("click", function () {
   affichageBoutique.style.display = "none";
   displayInfoProduct.style.display = "none";
   displayIndex.style.display = "block";
+  document.title = "Acceuil Choco-Pap";
 });
 
 let lienVersBoutique = document.querySelector("#lienVersBoutique");
@@ -669,6 +670,7 @@ let displayIndex = document.getElementById("displayIndex");
 lienVersBoutique.addEventListener("click", function () {
   displayIndex.style.display = "none";
   affichageBoutique.style.display = "block";
+  document.title = "Boutique Choco-Pap";
 });
 
 let lienBoutique = document.querySelector("#lienBoutique");
